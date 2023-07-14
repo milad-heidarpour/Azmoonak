@@ -1,0 +1,759 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    direction:rtl;
+    font-family:vazir-bold;
+}
+@font-face {
+    font-family: 'vazir-bold';
+    src: url('../fonts/vazir-bold.ttf') format('truetype');
+}
+
+.contain {
+    width: 100%;
+    height: 100px;
+    background-color: #aaaac1cb;
+}
+
+.Logo {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+    .Logo img {
+        position: absolute;
+        border-top-left-radius: 0;
+        border-top-right-radius: 29px;
+        border-bottom-left-radius: 29px;
+        border-bottom-right-radius: 0;
+        right: 50px;
+    }
+
+    .Logo i {
+        font-size: 40px;
+        position: absolute;
+        top: 30px;
+        right: 32px;
+        cursor: pointer;
+    }
+/*____the_____style___menu__sliding_____ */
+.offCanavas {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(128, 128, 128, 0.596);
+    position: absolute;
+    top: 0;
+    z-index: 55;
+    visibility: hidden;
+}
+
+.menu-sliding {
+    width: 60%;
+    height: 100%;
+    background-color: white;
+    position: relative;
+    animation: menuSliding forwards 1s;
+}
+
+@keyframes menuSliding {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 60%;
+        opacity: 1;
+    }
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    font-size: 26px;
+    cursor: pointer;
+    z-index: 99;
+}
+
+.img {
+    width: 100%;
+    height: 20%;
+}
+
+    .img img {
+        width: 50%;
+        height: 100%;
+        margin-top: 23px;
+    }
+
+.sliding-group-li {
+    list-style-type: none;
+    margin-top: 12px;
+    margin-right: 16px;
+    padding: 3px 4px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+    .sliding-group-li:hover {
+        background-color: #eeeeee;
+    }
+
+.angles {
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 3px;
+    border-radius: 50%;
+    background-color: black;
+    color: rgb(255, 132, 0);
+}
+
+.dropdown-onlineexam-box {
+    border: 1px solid #eae9e9;
+    display: none;
+    width: 260px
+}
+
+    .dropdown-onlineexam-box a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .dropdown-onlineexam-box li {
+        width: 257px;
+        list-style-type: none;
+        margin-top: 5px;
+        padding: 3px 4px;
+        cursor: pointer;
+        border-bottom: 1px solid #e6e3e3;
+    }
+
+        .dropdown-onlineexam-box li:hover {
+            background-color: aliceblue;
+            border-left: 2px solid #8585f0;
+        }
+
+
+/*____the_____style___menu__sliding_____ */
+
+
+
+
+
+.menu-ul li {
+    list-style-type: none;
+    margin-right: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.list-menu {
+    display: flex;
+    align-items: center;
+    height: 100px;
+}
+
+.search-box {
+    background-color: white;
+    position: relative;
+    width: 238px;
+    border-radius: 10px;
+}
+
+
+.search-inpt {
+    border: none;
+    outline: none;
+    padding: 3px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.search-box i {
+    position: absolute;
+    z-index: 19;
+    top: 7px;
+    left: 9px;
+    color: rgb(28, 28, 255);
+    cursor: pointer;
+}
+
+@media only screen and (max-width:950px) {
+    .search-box {
+        width: 188px;
+    }
+}
+
+@media only screen and (max-width:767px) {
+    .search-box {
+        width: 277px;
+        top: 30px;
+        padding: 1px;
+    }
+}
+
+
+/*_________hover_______List_______section_______*/
+.hidden-testList {
+    width: auto;
+    height: 150px;
+    padding-top: 10px;
+    background-color: white;
+    box-shadow: 3px 4px 10px gray;
+    position: absolute;
+    top: 15%;
+    right: 33%;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.guide:hover {
+    color: #ffffff;
+    text-shadow: 1px 2px 1px orange;
+}
+
+#online-test:hover .hidden-testList {
+    opacity: 1;
+    visibility: visible;
+    animation: animinTestList forwards .9s;
+}
+
+
+@keyframes animinTestList {
+    from {
+        top: 17%;
+    }
+
+    to {
+        top: 15%;
+    }
+}
+
+.hidden-testList::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    position: absolute;
+    top: -3px;
+    right: 4px;
+    transform: rotate(43deg);
+}
+
+.hidden-testList li {
+    width: 100%;
+    transition: .3s;
+    border-radius: 2px;
+    cursor: pointer;
+    padding: 3px 0;
+    border-bottom: 1px solid #8585f0;
+}
+
+    .hidden-testList li:hover {
+        background-color: rgb(216, 216, 216);
+    }
+
+.proposal-testList {
+    width: auto;
+    height: 150px;
+    padding-top: 10px;
+    background-color: white;
+    box-shadow: 3px 4px 10px gray;
+    position: absolute;
+    top: 15%;
+    right: 43%;
+    opacity: 0;
+    visibility: hidden;
+}
+
+    .proposal-testList::after {
+        content: '';
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        position: absolute;
+        top: -3px;
+        right: 4px;
+        transform: rotate(43deg);
+    }
+
+#proposal-menu:hover .proposal-testList {
+    opacity: 1;
+    visibility: visible;
+    animation: animinTestList forwards .9s;
+}
+
+.proposal-testList li {
+    width: 100%;
+    transition: .3s;
+    border-radius: 2px;
+    cursor: pointer;
+    padding: 3px 0;
+    border-bottom: 1px solid #8585f0;
+}
+
+    .proposal-testList li:hover {
+        background-color: rgb(216, 216, 216);
+    }
+
+.example-question-testList {
+    width: auto;
+    height: auto;
+    padding-top: 10px;
+    background-color: white;
+    box-shadow: 3px 4px 10px gray;
+    position: absolute;
+    top: 15%;
+    right: 52%;
+    opacity: 0;
+    visibility: hidden;
+}
+
+    .example-question-testList::after {
+        content: '';
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        position: absolute;
+        top: -3px;
+        right: 4px;
+        transform: rotate(43deg);
+    }
+
+#example-question-menu:hover .example-question-testList {
+    opacity: 1;
+    visibility: visible;
+    animation: animinTestList forwards .9s;
+}
+
+.example-question-testList li {
+    width: 100%;
+    transition: .3s;
+    border-radius: 2px;
+    cursor: pointer;
+    padding: 3px 0;
+    border-bottom: 1px solid #8585f0;
+}
+
+    .example-question-testList li:hover {
+        background-color: rgb(216, 216, 216);
+    }
+/*_________hover_______List_______section_______*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*__________________________________________________________________________________________ */
+
+
+
+
+
+/*_________________START____THE____TEST____Section_________ */
+.img-started {
+    width: 50%;
+    height: 400px;
+}
+
+    .img-started img {
+        width: 100%;
+        height: 100%;
+    }
+
+.started {
+    width: 50%;
+}
+
+    .started h2 {
+        width: auto;
+        height: auto;
+        animation: animH2 forwards 2s;
+        position: relative;
+    }
+
+@keyframes animH2 {
+    from {
+        top: 0%;
+        opacity: 0;
+    }
+
+    to {
+        top: 10%;
+        opacity: 1;
+    }
+}
+
+.started h4 {
+    position: relative;
+    animation: animH4 forwards 1.6s;
+    font-weight: 100;
+    top: 14%;
+}
+
+@keyframes animH4 {
+    from {
+        right: 35%;
+        opacity: 0;
+    }
+
+    to {
+        right: 0;
+        opacity: 1;
+    }
+}
+
+.butn {
+    width: 130px;
+    position: relative;
+    top: 35%;
+    right: 48%;
+    border: none;
+    outline: none;
+    background-color: orange;
+    animation: btnAnim forwards 1.3s;
+}
+
+    .butn:hover {
+        background-color: rgb(255, 116, 66);
+        box-shadow: 1px 1px 12px orange;
+    }
+
+@keyframes btnAnim {
+    from {
+        top: 60%;
+        opacity: 0;
+    }
+
+    to {
+        top: 35%;
+        opacity: 1;
+    }
+}
+
+
+/*_________________END____THE____TEST____Section_________ */
+
+
+
+/*____________________________________________________________________________________ */
+
+
+
+
+/*_________START______THE________view_____section______*/
+
+
+.fnicon {
+    font-size: 34px;
+    color: rgb(0, 0, 43);
+    position: relative;
+    right: 50px;
+    transition: ease-in-out .3s;
+}
+
+    .fnicon:hover {
+        color: orange;
+        text-shadow: 2px 2px 7px white;
+    }
+
+.pdf {
+    position: relative;
+    right: 70px !important;
+}
+
+.div {
+    width: 380px;
+    height: 300px;
+    background-color: rgba(171, 171, 171, 0.806);
+}
+
+@media only screen and (max-width:1140px) {
+    .div {
+        width: 270px;
+        height: 240px;
+    }
+}
+
+
+/*_________END______THE________view_____section______*/
+
+
+/*________________________________________________________________________________________________ */
+
+
+
+/*_________START______THE_______introduction_____Section______*/
+
+.introduction img {
+    width: 100%;
+    height: 100%;
+}
+
+.introduction-text p {
+    font-size: 24px;
+}
+
+
+/*_________END______THE_______introduction_____Section______*/
+
+
+/*______________________________________________________________________________________ */
+
+
+
+
+/* _________START________Site____Status____Section_______ */
+
+.SiteStatus {
+    height: 200px;
+    background-color: #ebebeb;
+}
+
+    .SiteStatus a {
+        text-decoration: none;
+    }
+
+.status-icons {
+    font-size: 34px;
+    color: rgb(0, 0, 27);
+    transition: ease-in-out .3s;
+}
+
+    .status-icons:hover {
+        color: orange;
+    }
+
+.userSpan:hover {
+    color: rgb(0, 0, 27) !important;
+}
+
+/* _________END________Site____Status____Section_______ */
+
+
+/*_____________________________________________________________________________________________*/
+
+
+
+/* _______START_______THE_______footer_______Section______ */
+
+
+
+/* ______footer_____logo______section________ */
+.footer-logo {
+    background-color: #fca402;
+}
+
+.Logo-F {
+    height: 80px;
+}
+
+.footerLogoImg {
+    height: 100%;
+    width: 94px;
+    margin-right: -12px;
+    border-bottom-left-radius: 36px;
+    border-top-left-radius: 1px;
+}
+/* ______footer_____logo______section________ */
+
+.footer {
+    height: 320px;
+    background-color: #fca402;
+}
+
+@media only screen and (max-width:764px) {
+    .footer {
+        height: auto;
+    }
+}
+
+.phone {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+    .phone:hover::after {
+        content: "01344805763";
+        background-color: white;
+        border-radius: 5px;
+        padding: 5px;
+        position: relative;
+        top: -28px;
+        right: -60px;
+        box-shadow: 1px 1px 5px white;
+    }
+
+.div-line {
+    width: 100%;
+    height: 1px;
+    background-color: black;
+}
+
+.footer-uls ul a {
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    transition: ease-in-out .4s;
+}
+
+.footer-uls a:hover {
+    color: whitesmoke;
+    text-shadow: 3px 3px 14px white;
+    font-size: 22px;
+}
+
+    .footer-uls a:hover li {
+        border-bottom: 1.6px solid rgb(0, 114, 95);
+    }
+
+.footer-uls ul a li {
+    list-style-type: none;
+    border-bottom: 1px solid black;
+}
+
+.img-sotialNetwork {
+    border-radius: 50%;
+    transition: ease-in-out .3s;
+}
+
+    .img-sotialNetwork:hover {
+        box-shadow: 3px 3px 10px whitesmoke;
+        width: 90px;
+        height: 90px;
+    }
+
+
+/* _______START_______THE_______footer_______Section______ */
+
+
+
+
+
+
+/*////// account style////*/
+* {
+    --skyblue: rgb(0, 129, 180);
+}
+
+.account-form {
+    background-color: var(--skyblue);
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    margin: auto;
+}
+
+    .account-form input {
+        background-color: white;
+        border-radius: 45px;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .account-form button {
+        background-color: green;
+        color: white;
+        outline: none;
+        border: none;
+        border-radius: 45px;
+        display: inline-block;
+        margin-top: 32px;
+    }
+
+
+
+    .account-form a {
+        background-color: transparent;
+        color: white;
+        text-decoration: none;
+    }
+
+
+
+
+
+
+/* برای بارگذاری سوالات کد های آریا*/
+
+.bg-q {
+    border: 2px solid black;
+    background-color: rgb(224, 153, 0);
+    padding: 100px;
+    border-radius: 25px;
+}
+
+.q-form {
+    display: block;
+    font-size: 23px;
+}
+
+    .q-form input {
+        font-size: 15px;
+    }
+
+.q-right {
+    direction: rtl;
+}
+
+.q-left {
+    direction: ltr;
+}
+
+.q-right hr {
+    border-color: black;
+}
+
+.in-red {
+    background-color: red;
+    border: none;
+    font-size: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-right: 8px;
+    padding-left: 8px;
+    border-radius: 6px;
+}
+
+.in-green {
+    background-color: rgb(11, 182, 11);
+    border: none;
+    font-size: 22px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-right: 15px;
+    padding-left: 15px;
+    border-radius: 6px;
+    border-radius: 6px;
+}
+
+.bg-q .q-right .q-left a .in-green, .bg-q .q-right .q-left a .in-red {
+    transition: 400ms;
+}
+
+    .bg-q .q-right .q-left a .in-green:hover {
+        background-color: rgb(23, 79, 0);
+    }
+
+    .bg-q .q-right .q-left a .in-red:hover {
+        background-color: rgb(104, 0, 0);
+    }

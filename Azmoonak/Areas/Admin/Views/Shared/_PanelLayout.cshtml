@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/PanelStyle.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+@*    <div class="sidebar col-md-2 col-sm-10">
+        <a><span class="fa fa-home fa-lg"></span>صفحه هوم</a>
+        <a><span class="fa fa-dashboard fa-lg"></span>داشبورد</a>
+        <a><span class="fa fa-users fa-lg"></span>کاربران</a>
+        <a asp-controller="Groups" asp-action="Index"><span class="fa fa-list fa-lg"></span>دسته بندی ها</a>
+        <a asp-area="Admin" asp-controller="questions" asp-action="index"><span class="fa fa-book fa-lg"></span>سوالات</a>
+        <a><span class="fa fa-gears fa-lg"></span>تنظیمات</a>
+        <a><span class="fa fa-headphones fa-lg"></span>پشتیبانی</a>
+        <a><span class="fa fa-sign-out fa-lg"></span>خروج</a>
+    </div>*@
+
+
+
+    <div class="container" >
+        <div class="navigation">
+            <ul>
+               <li>
+                    <a style="color:white">
+                        <span class="icon">
+                            <i class="fa fa-user-circle icon fa-lg"></i>
+                        </span>
+                        <h3 class="title">صفحه ادمین</h3>
+                    </a>
+                </li>
+               <li>
+                    <a asp-area="" asp-controller="home" asp-action="index">
+                        <span class="icon">
+                            <i class="fa fa-home icons"></i>
+                        </span>
+                        <span class="title">خانه</span>
+                    </a>
+                </li>
+               <li>
+                    <a asp-area="admin" asp-controller="panel" asp-action="index">
+                        <span class="icon">
+                            <i class="fa fa-dashboard fa-lg"></i>
+                        </span>
+                        <span class="title">داشبورد مدیر</span>
+                    </a>
+                </li>
+               <li>
+                    <a>
+                        <span class="icon">
+                            <i class ="fa fa-users fa-lg"></i>
+                        </span>
+                        <span class="title">کاربران</span>
+                    </a>
+                </li>
+               <li>
+                    <a asp-controller="Groups" asp-action="Index">
+                        <span class="icon">
+                            <i class ="fa fa-list fa-lg" class="fa fa-list fa-lg"></i>
+                        </span>
+                        <span class="title">دسته بندی ها</span>
+                    </a>
+                </li>
+               <li>
+                    <a asp-controller="questions" asp-action="index">
+                        <span class="icon">
+                            <i class="fa fa-book fa-lg"></i>
+                        </span>
+                        <span class="title">سوالات</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="icon">
+                            <i class="fa fa-gears fa-lg"></i>
+                        </span>
+                        <span class="title">تنظیمات</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="icon">
+                            <i class="fa fa-headphones fa-lg"></i>
+                        </span>
+                        <span class="title">پشتیبانی</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="account" asp-action="logout">
+                        <span class="icon">
+                            <i class="fa fa-sign-out fa-lg"></i>
+                        </span>
+                        <span class="title">خروج</span>
+                    </a>
+                </li>
+           </ul>
+        </div>
+    </div>
+
+
+    <div class="renderbox">
+        <div class="exam">
+            @RenderBody()
+        </div>
+    </div>
+
+</body>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="~/js/minscript.js"></script>
+<script src="~/Js/PanelScript.js"></script>
+</html>

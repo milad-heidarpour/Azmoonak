@@ -1,0 +1,75 @@
+﻿@model Azmoonak.Database.Models.Question
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_PanelLayout.cshtml";
+}
+
+<div class="text-center">
+    <h4 id="edit-mode" class="text-center text-white rounded-3 p-1" hidden></h4>
+    <hr />
+    <dl class="row alert alert-info col-md-6 col-12 ">
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.QText)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.QText)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.AnOne)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.AnOne)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.AnTwo)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.AnTwo)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.AnThree)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.AnThree)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.AnFour)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.AnFour)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.CorrectAn)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.CorrectAn)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Group)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Group.GroupName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning"><span class="fa fa-edit"></span> Edit</a> |
+    <a asp-action="Index" class="btn btn-outline-info"><span class="fa fa-arrow-left"></span> Back to List</a>
+</div>
+
+
+<script type="text/javascript">
+
+    let _edittitle = document.getElementById('edit-mode');
+
+    window.addEventListener('load', () => {
+        //alert('@(ViewBag.EditResult)');
+        let result = '@(ViewBag.EditResult)';
+        if (result == 'True') {
+            _edittitle.innerHTML = "ویرایش با موفقیت انجام شد";
+            _edittitle.classList.add('bg-success');
+            _edittitle.hidden = false;
+        }
+    })
+</script>

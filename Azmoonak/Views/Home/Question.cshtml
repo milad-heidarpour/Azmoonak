@@ -1,0 +1,41 @@
+﻿@*@model IEnumerable<Azmoonak.Database.Models.Question>*@
+@model Azmoonak.Core.ViewModels.GroupQuestionViewModel
+
+@*@{
+    ViewData["Title"] = "Question";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}*@
+
+<div>
+    <partial name="QuestionPartial.cshtml" model="@Model.Questions" />
+</div>
+
+
+@*<main>
+    <h1 style="direction:rtl">سوالات موجود از دسته بندی  @ViewBag.Question</h1>
+
+    @foreach (var item in Model)
+    {
+        if (item != null)
+        {
+            <!--related Question -->
+            <div style="border:2px solid black;background-color: rgb(224, 153, 0);padding: 30px;border-radius: 25px; direction:rtl;">
+                <form style="display: block;">
+                    <h2>@item.QText</h2>
+
+                    <h3><span>الف ) @item.AnOne</span><hr></h3>
+                    <h3><span>ب ) @item.AnTwo</span><hr></h3>
+                    <h3><span>ج ) @item.AnThree</span><hr></h3>
+                    <h3> <span>د ) @item.AnFour</span><hr></h3>
+                    <h3 style="background-color:green;height: 30px;text-align: center;padding-top: 5px;border:2px solid yellow;border-radius: 40px;"><span>جواب درست ) @item.CorrectAn</span></h3>
+                </form>
+            </div>
+            <br />
+        }
+        else
+        {
+            <h1>فعلا سوالی وجود ندارد</h1>
+        }
+
+    }
+</main>*@

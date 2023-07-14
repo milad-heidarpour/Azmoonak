@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Azmoonak.Database.Models.Question>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_PanelLayout.cshtml";
+}
+
+<h1 class="text-center" style="color:#f50057">ثبت سوالات جدید</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success me-4"><span class="fa fa-plus-circle fa-lg "></span> Create New</a>
+</p>
+<div class="col-12">
+    <table class="table table-striped table-hover rounded-5">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.QText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnOne)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnTwo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnThree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnFour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CorrectAn)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Group)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td style="direction:rtl">
+                @Html.DisplayFor(modelItem => item.QText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnOne)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnTwo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnThree)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnFour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CorrectAn)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Group.GroupName)
+            </td>*@
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><span class="fa fa-edit"></span> Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info"><span class="fa fa-info"></span> Details</a> |
+                    <a data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete('@(item.Id)')" class="btn btn-danger"><span class="fa fa-trash-o"></span></a>
+                    
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-white">
+                @*<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>*@
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="modalBody" class="modal-body bg-black">
+                ...
+            </div>
+            @*<div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+            </div>*@
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+    const myModal = document.getElementById('myModal')
+    const myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', () => {
+        myInput.focus()
+    })
+    function Delete(questionid) {
+        $.ajax({
+            url: '/admin/questions/delete',
+            type: 'get',
+            data: {/*controller parameter*/  id:questionid /*send parameter*/ },
+            success: (result) => {
+                document.getElementById('modalBody').innerHTML = result;
+            }
+        })
+    }
+
+</script>

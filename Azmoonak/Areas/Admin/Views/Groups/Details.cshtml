@@ -1,0 +1,78 @@
+﻿@model Azmoonak.Database.Models.Group
+
+@{
+    ViewData["Title"] = Model.GroupName + "جزئیات";
+    Layout = "~/Areas/Admin/Views/Shared/_PanelLayout.cshtml";
+}
+
+<h1 class="text-center">@Model.GroupName | جزئیات</h1>
+
+<div>
+    <h4 id="edit-mode" class="text-center text-white rounded-3 p-1"></h4>
+    <hr />
+    
+    <dl class="row alert alert-info col-md-6 col-12">
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.GroupName)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.GroupName)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.GroupDes)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.GroupDes)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.NotShow)
+        </dt>
+        <dd class="col-sm-8">
+            @{
+                if (Model.NotShow)
+                {
+                    <a class="btn btn-danger rounded-5"><span class="fa fa-times-circle"></span>عدم نمایش عمومی</a>
+                }
+                else
+                {
+                    <a class="btn btn-success rounded-5"><span class="fa fa-check-circle"></span> نمایش عمومی</a>
+                }
+            }
+            @*@Html.DisplayFor(model => model.NotShow)*@
+        </dd>
+    </dl>
+</div>
+<div>
+    
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning"><span class="fa fa-edit"></span>Edit</a> |
+    <a asp-action="Index" class="btn btn-outline-info"><span class="fa fa-arrow-left"></span>Back to List</a>
+    <hr />
+    <h1>تعداد سوالات از این دسته بندی : @ViewBag.QuestionCount</h1>
+    <hr />
+    @*related Question*@
+    @{
+        var questions = ViewBag.RelatedQuestion;
+        if (questions != null && questions.Count > 0)
+        {
+            <div class=" col-12 p-3"></div>
+            <h1>سوالات مشابه از دسته بندی @Model.GroupName</h1>
+            <hr />
+            <partial name="QuestionPartial" model="questions" />
+        }
+    }
+</div>
+
+<script type="text/javascript">
+
+    let _edittitle = document.getElementById('edit-mode');
+
+    window.addEventListener('load', () => {
+        //alert('@(ViewBag.EditResult)');
+        let result = '@(ViewBag.EditResult)';
+        if (result == 'True') {
+            _edittitle.innerHTML = "ویرایش با موفقیت انجام شد";
+            _edittitle.classList.add('bg-success');
+            _edittitle.hidden = false;
+        }
+    })
+</script>

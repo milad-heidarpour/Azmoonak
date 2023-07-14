@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Azmoonak.Database.Models.Question>
+
+
+<main>
+
+    @foreach (var item in Model)
+    {
+        <!--related Question -->
+        <div class="bg-q">
+            <form class="q-right">
+                <h1>@item.QText</h1>
+
+                <span class="q-form">الف)@item.AnOne</span><hr>
+                <span class="q-form">ب)@item.AnTwo</span><hr>
+                <span class="q-form">ج)@item.AnThree</span><hr>
+                <span class="q-form">د)@item.AnFour</span><hr>
+
+            </form>
+        </div>
+    }
+</main>

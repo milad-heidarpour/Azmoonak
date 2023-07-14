@@ -1,0 +1,6 @@
+﻿@model IEnumerable<Azmoonak.Database.Models.Group>
+
+@foreach (var item in Model)
+{
+    <li><a asp-area="" asp-controller="home" asp-action="question" asp-route-id="@item.Id">@item.GroupName</a></li>
+}

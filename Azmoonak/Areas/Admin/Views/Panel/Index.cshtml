@@ -1,0 +1,32 @@
+﻿@model IEquatable<Azmoonak.Core.ViewModels.GroupQuestionViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_PanelLayout.cshtml";
+}
+
+<div class="col-div-4-1">
+    <div class="box">
+        <h3 class="head-1">تعداد سوالات</h3>
+        <h4 class="number">@ViewBag.Question</h4>
+        <a asp-area="admin" asp-controller="questions" asp-action="index" class="head-1" style="background:green;color:black;border-radius:10px;padding:5px; text-decoration:none;">جزئیات بیشتر</a>
+    </div>
+</div>
+
+
+<div class="col-div-4-1">
+    <div class="box">
+        <h3>تعداد کل گروه ها </h3>
+        <h4> @ViewBag.Group</h4>
+        <a asp-area="admin" asp-controller="groups" asp-action="index" style="background:green;color:black;border-radius:10px;padding:5px; text-decoration:none;">جزئیات بیشتر</a>
+    </div>
+</div>
+
+
+<div class="col-div-4-1">
+    <div class="box">
+        <h3>تعداد کل کاربران</h3>
+        <h4>Not Found</h4>
+        <a asp-area="admin" asp-controller="groups" asp-action="index" style="background:green;color:black;border-radius:10px;padding:5px; text-decoration:none;">جزئیات بیشتر</a>
+    </div>
+</div>
