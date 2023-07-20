@@ -1,10 +1,10 @@
 ﻿@*@model IEnumerable<Azmoonak.Database.Models.Question>*@
 @model Azmoonak.Core.ViewModels.GroupQuestionViewModel
 
-@*@{
+@{
     ViewData["Title"] = "Question";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
-}*@
+}
 
 <div>
     <partial name="QuestionPartial.cshtml" model="@Model.Questions" />
