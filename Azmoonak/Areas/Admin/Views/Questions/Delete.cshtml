@@ -1,11 +1,10 @@
 ﻿@model Azmoonak.Database.Models.Question
 
-<div style="color:#04151f">
-    <h1>DELETE</h1>
+<div>
     <h3>عنوان سوال:@Model.QText</h3>
     <hr />
-    <h4 class="text-danger">آیا حذف  میکنید؟</h4>
-    <form asp-controller="questions" asp-action="delete">
+    <h4 class="text-danger text-center">آیا حذف  میکنید؟</h4>
+    <form asp-controller="questions" asp-action="delete" class="text-center">
         <input asp-for="Id" hidden />
         <button class="btn btn-danger">Yes</button>
         <a asp-controller="questions" asp-action="index" class="btn btn-outline-danger">No</a>

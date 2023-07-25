@@ -24,22 +24,4 @@ public class HomeController : Controller
         };
         return View(viewModel);
     }
-    public async Task<IActionResult> Question(int id)//id= groupid
-    {
-        var questions = await _question.GetGroupQuestions(id);
-
-        GroupQuestionViewModel viewModel = new GroupQuestionViewModel()
-        {
-            Questions = questions,
-        };
-        return View(viewModel);
-
-
-        //ViewBag.Question = (await _group.GetGroup(id)).GroupName.ToString();
-        //if (questions != null)
-        //{
-        //    return View(questions);
-        //}
-        //return null;
-    }
 }
