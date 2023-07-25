@@ -18,8 +18,7 @@ public class QuestionController : Controller
     {
         return View();
     }
-
-    public async Task<IActionResult> Question(int id)//id= groupid
+    public async Task<IActionResult> GroupQuestion (int id)//id= groupid
     {
         var questions = await _question.GetGroupQuestions(id);
         var groups = await _group.GetGroups();
@@ -39,4 +38,5 @@ public class QuestionController : Controller
         //}
         //return null;
     }
+
 }
