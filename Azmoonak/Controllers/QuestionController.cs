@@ -14,9 +14,16 @@ public class QuestionController : Controller
         _question = question;
     }
 
-    public IActionResult Index()
+    public async Task< IActionResult> Index()
     {
-        return View();
+        var groups = await _group.GetGroups();
+
+        GroupQuestionViewModel viewModel = new GroupQuestionViewModel()
+        {
+            Groups = groups,
+        };
+        return View(viewModel);
+        //اینجا باید دسته بندی گروه هارو نمایش بدم که روی هر کدو زد بره نمونه سوالات اون دسته رو نمایش بده با ویوی باحال
     }
     public async Task<IActionResult> GroupQuestion (int id)//id= groupid
     {
@@ -38,5 +45,4 @@ public class QuestionController : Controller
         //}
         //return null;
     }
-
 }
