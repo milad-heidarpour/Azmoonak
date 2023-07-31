@@ -4,9 +4,10 @@
     box-sizing: border-box;
 }
 
-body{
-    direction:rtl;
-    font-family:vazir-bold;
+body {
+    direction: rtl;
+    font-family: vazir-bold;
+    background-color: #151515;
 }
 @font-face {
     font-family: 'vazir-bold';
@@ -16,7 +17,7 @@ body{
 .contain {
     width: 100%;
     height: 100px;
-    background-color: #aaaac1cb;
+    background-color: #f07900;
 }
 
 .Logo {
@@ -696,8 +697,8 @@ body{
 /* برای بارگذاری سوالات کد های آریا*/
 
 .bg-q {
-    border: 2px solid black;
-    background-color: rgb(224, 153, 0);
+    border: 2px solid orange;
+    background-color: #151515;
     padding: 100px;
     border-radius: 25px;
 }
@@ -705,6 +706,13 @@ body{
 .q-form {
     display: block;
     font-size: 23px;
+    color: #f8a145;
+}
+.q-question {
+    color: #D8D9DA;
+}
+.q-alpha {
+    color: #D8D9DA;
 }
 
     .q-form input {
@@ -720,11 +728,10 @@ body{
 }
 
 .q-right hr {
-    border-color: black;
+    border-color: orange;
 }
 
 .in-red {
-    background-color: red;
     border: none;
     font-size: 20px;
     padding-top: 7px;
