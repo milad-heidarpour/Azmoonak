@@ -7,7 +7,6 @@
 body {
     direction: rtl;
     font-family: vazir-bold;
-    background-color: #151515;
 }
 @font-face {
     font-family: 'vazir-bold';
@@ -101,10 +100,12 @@ body {
     padding: 3px 4px;
     cursor: pointer;
     border-radius: 3px;
+    z-index:10;
 }
 
     .sliding-group-li:hover {
         background-color: #eeeeee;
+        z-index:10;
     }
 
 .angles {
@@ -349,14 +350,151 @@ body {
     .example-question-testList li:hover {
         background-color: rgb(216, 216, 216);
     }
-/*_________hover_______List_______section_______*/
+
+
+.header {
+    width: 100%;
+    height: 540px;
+    background-color: rgb(206, 176, 176);
+    display: flex;
+    position: relative;
+    z-index:10;
+}
+
+
+
+
+/*______navigation_____style___ */
+
+
+
+
+/*________________________________________animation text H1 auto typing*/
+
+
+
+
+/*.text-AutoType{
+    display:inline-block;
+    position:absolute;
+    top:130px;
+    right:100px;
+    width:auto;
+}*/
+/*______navigation_____style___ */
+.background-header {
+    width: 65%;
+    height: 100%;
+}
+
+
+
+
+    .background-header img {
+        width: 100%;
+        height: 100%;
+    }
+
+
+
+
+.register-buttons {
+    width: 35%;
+    height: 100%;
+    background-color: #FFFFFF;
+}
+
+
+
+
+.group-login {
+    width: 250px;
+    height: 100px;
+}
+
+
+
+
+.btn-login {
+    width: 100px;
+    height: 40px;
+    background-color: orange;
+    transition: .2s;
+}
+
+
+
+
+.btn-register {
+    width: 100px;
+    height: 40px;
+    background-color: orange;
+    transition: .2s;
+}
+
+
+
+
+.hover-btn:hover {
+    background-color: rgb(255, 116, 66);
+    box-shadow: 1px 1px 12px orange;
+}
+/*-----Responsive__style__start----*/
+@media only screen and (max-width:628px) {
+    .header {
+        height: 400px;
+    }
+
+
+
+
+    .background-header {
+        width: 69.8%;
+        height: 100%;
+    }
+
+
+
+
+        .background-header img {
+            width: 100%;
+            height: 100%;
+        }
+
+
+
+
+    .register-buttons {
+        width: 30%;
+    }
+
+
+
+
+    .btn-login {
+        width: 88%;
+        height: 30px;
+        background-color: orange;
+        margin-bottom: 2.5px;
+    }
+
+
+
+
+    .btn-register {
+        width: 88%;
+        height: 30px;
+        background-color: orange;
+        margin-top: 2.5px;
+    }
+}
+/*-----Responsive__style__start----*/
 
 
 
 
 
-
-
+/*________header_style_____END_____ */
 
 
 
@@ -367,23 +505,29 @@ body {
 /*__________________________________________________________________________________________ */
 
 
-
-
-
 /*_________________START____THE____TEST____Section_________ */
 .img-started {
     width: 50%;
     height: 400px;
 }
 
+
+
+
     .img-started img {
         width: 100%;
         height: 100%;
     }
 
+
+
+
 .started {
     width: 50%;
 }
+
+
+
 
     .started h2 {
         width: auto;
@@ -392,17 +536,26 @@ body {
         position: relative;
     }
 
+
+
+
 @keyframes animH2 {
     from {
         top: 0%;
         opacity: 0;
     }
 
+
+
+
     to {
         top: 10%;
         opacity: 1;
     }
 }
+
+
+
 
 .started h4 {
     position: relative;
@@ -411,17 +564,26 @@ body {
     top: 14%;
 }
 
+
+
+
 @keyframes animH4 {
     from {
         right: 35%;
         opacity: 0;
     }
 
+
+
+
     to {
         right: 0;
         opacity: 1;
     }
 }
+
+
+
 
 .butn {
     width: 130px;
@@ -434,16 +596,25 @@ body {
     animation: btnAnim forwards 1.3s;
 }
 
+
+
+
     .butn:hover {
         background-color: rgb(255, 116, 66);
         box-shadow: 1px 1px 12px orange;
     }
+
+
+
 
 @keyframes btnAnim {
     from {
         top: 60%;
         opacity: 0;
     }
+
+
+
 
     to {
         top: 35%;
@@ -452,41 +623,59 @@ body {
 }
 
 
-/*_________________END____THE____TEST____Section_________ */
+
+
+
+/*________________
+
+
 
 
 
 /*____________________________________________________________________________________ */
 
 
-
-
 /*_________START______THE________view_____section______*/
 
 
+
+
+
 .fnicon {
-    font-size: 34px;
+    font-size: 38px !important;
     color: rgb(0, 0, 43);
     position: relative;
     right: 50px;
     transition: ease-in-out .3s;
 }
 
+
+
+
     .fnicon:hover {
         color: orange;
         text-shadow: 2px 2px 7px white;
     }
+
+
+
 
 .pdf {
     position: relative;
     right: 70px !important;
 }
 
+
+
+
 .div {
     width: 380px;
     height: 300px;
-    background-color: rgba(171, 171, 171, 0.806);
+    background-color: #151515;
 }
+
+
+
 
 @media only screen and (max-width:1140px) {
     .div {
@@ -496,15 +685,13 @@ body {
 }
 
 
+
+
+
+
 /*_________END______THE________view_____section______*/
-
-
 /*________________________________________________________________________________________________ */
-
-
-
 /*_________START______THE_______introduction_____Section______*/
-
 .introduction img {
     width: 100%;
     height: 100%;
@@ -688,7 +875,6 @@ body {
         color: white;
         text-decoration: none;
     }
-
 
 
 

@@ -12,6 +12,8 @@ builder.Services.AddScoped<DatabaseContext, DatabaseContext>();
 builder.Services.AddScoped<IGroup,GroupService>();
 builder.Services.AddScoped<IQuestion,QuestionService>();
 builder.Services.AddScoped<IAccount,AccountService>();
+builder.Services.AddScoped<IProfile,ProfileService>();
+
 
 const string scheme = "Azmoonak";
 builder.Services.AddAuthentication(scheme).AddCookie(scheme, option =>
