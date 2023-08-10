@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Azmoonak.Database.Models.Question>
+<form asp-controller="exam" asp-action="StartExam" class="q-right" dir="rtl">
+    @for (int i = 0; i < Model.Count(); i++)
+    {
+        <!--related Question -->
+        <div class="bg-q">
+
+            <input name="[@i].QText" value="@Model.ElementAt(i).QText">
+
+        </div>
+    }
+
+
+
+    <button type="submit">ارسال</button>
+</form>

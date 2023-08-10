@@ -7,45 +7,48 @@
 
 <h1 class="text-center">Create</h1>
 
+
+
 <h4>Question</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+
+    <div class="col-md-6">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="QText" class="control-label"></label>
-                <input asp-for="QText" class="form-control" />
+                <input asp-for="QText" class="form-control border-black border-4" />
                 <span asp-validation-for="QText" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AnOne" class="control-label"></label>
-                <input asp-for="AnOne" class="form-control" />
+                <label asp-for="AnOne" class="control-label pt-3"></label>
+                <input asp-for="AnOne" class="form-control border-black border-4" />
                 <span asp-validation-for="AnOne" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AnTwo" class="control-label"></label>
-                <input asp-for="AnTwo" class="form-control" />
+                <label asp-for="AnTwo" class="control-label pt-3"></label>
+                <input asp-for="AnTwo" class="form-control border-black border-4" />
                 <span asp-validation-for="AnTwo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AnThree" class="control-label"></label>
-                <input asp-for="AnThree" class="form-control" />
+                <label asp-for="AnThree" class="control-label pt-3"></label>
+                <input asp-for="AnThree" class="form-control border-black border-4" />
                 <span asp-validation-for="AnThree" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AnFour" class="control-label"></label>
-                <input asp-for="AnFour" class="form-control" />
+                <label asp-for="AnFour" class="control-label pt-3"></label>
+                <input asp-for="AnFour" class="form-control border-black border-4" />
                 <span asp-validation-for="AnFour" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CorrectAn" class="control-label"></label>
-                <input asp-for="CorrectAn" class="form-control" />
+                <label asp-for="CorrectAn" class="control-label pt-3"></label>
+                <input asp-for="CorrectAn" class="form-control border-black bg-success border-4" />
                 <span asp-validation-for="CorrectAn" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="GroupId" class="control-label"></label>
-                <select asp-for="GroupId" class="form-control" asp-items="ViewBag.GroupId"><option selected disabled>---Select Group---</option></select>
+                <label asp-for="GroupId" class="control-label pt-3 "></label>
+                <select asp-for="GroupId" class="form-control border-black bg-warning border-4" asp-items="ViewBag.GroupId"><option selected disabled>---Select Group---</option></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-success mt-3" />
@@ -54,7 +57,7 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
+<div dir="ltr">
+    <a asp-action="Index" class=" btn btn-danger">Back to List</a>
+</div>

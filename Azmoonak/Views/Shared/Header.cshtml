@@ -9,14 +9,9 @@
             </div>
             <div class="d-none col-md-6 d-md-flex align-items-center">
                 <ul class="d-flex menu-ul mx-auto">
-                    <li class="list-menu" id="online-test">
+                    <a asp-area="" asp-controller="exam" asp-action="showexamgroups" class="list-menu">
                         آزمون آنلاین
-                        <div id="test-listmenu" class="hidden-testList d-flex rounded-1">
-                            <ul>
-                                @*اینجا باید یک ویو جدید بسازم که بره توی صفحه دیگه و لیست امتحانات رو نشان بده دسته بندی های گروه*@
-                            </ul>
-                        </div>
-                    </li>
+                    </a>
 
                     <li id="proposal-menu" class="list-menu">
                         پیشنهادی

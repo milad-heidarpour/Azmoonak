@@ -14,26 +14,28 @@ public class Question
     public int Id { get; set; }
 
 
-    [Required(ErrorMessage = "درج متن سوال الزامی میباشد")]
-    [Display(Name = "متن سوال")]
+    [Required(ErrorMessage = "درج متن سوال الزامی می باشد")]
+    [Display(Name = "لطفا متن سوال خود را وارد نمایید")]
     public string QText { get; set; }
 
-    [Required]
-    [Display(Name = "گزینه اول")]
+    [Required(ErrorMessage = "درج گزینه اول الزامی می باشد")]
+    [Display(Name = "گزینه اول(الف)")]
     public string AnOne { get; set; }
-    [Required]
-    [Display(Name = "گزینه دوم")]
+    [Required(ErrorMessage = "درج گزینه دوم الزامی می باشد")]
+    [Display(Name = "گزینه دوم(ب)")]
     public string AnTwo { get; set; }
-    [Required]
-    [Display(Name = "گزینه سوم")]
+    [Required(ErrorMessage = "درج گزینه سوم الزامی می باشد")]
+    [Display(Name = "گزینه سوم(ج)")]
     public string AnThree { get; set; }
-    [Required]
-    [Display(Name = "گزینه چهارم")]
+    [Required(ErrorMessage = "درج گزینه چهارم الزامی می باشد")]
+    [Display(Name = "گزینه چهارم(د)")]
     public string AnFour { get; set; }
-    [Required]
+    [Required(ErrorMessage = "لطفا گزینه درست را انتخاب نمایید")]
     [Display(Name = "گزینه درست")]
     public string CorrectAn { get; set; }
 
+    [Required(ErrorMessage = "لطفا گروه مد نظر خود راانتخاب نمایید")]
+    [Display(Name = "انتخاب گروه")]
     public int GroupId { get; set; }
 
     [ForeignKey("GroupId")]

@@ -1,0 +1,7 @@
+﻿@model IEnumerable<Azmoonak.Database.Models.Group>
+
+@foreach (var item in Model)
+{
+    <div>میخواهیم گروه هارا به صورت ردیف سه تایی نمایش دهد در باکس های مختلف</div>
+    <li><a asp-area="" asp-controller="exam" asp-action="StartExam" asp-route-id="@item.Id">@item.GroupName</a></li>
+}

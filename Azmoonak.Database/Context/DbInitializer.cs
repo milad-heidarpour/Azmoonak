@@ -41,7 +41,7 @@ namespace Azmoonak.Database.Context
                 Id = Guid.NewGuid(),
                 RoleId = adminRole.Id,
                 Mobile = "09115523293",
-                Password = await new Security().HashPassword("12345678"),
+                Password = await new Security().HashPassword(await new Security().HashPassword("12345678")),
                 IsActive = true,
             };
             _modelBuilder.Entity<User>().HasData(adminUser);

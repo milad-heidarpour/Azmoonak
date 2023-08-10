@@ -20,7 +20,6 @@ public class Group
     public string GroupName { get; set; }
 
 
-
     [Display(Name = "درباره گروه")]
     [MaxLength(100)]
     public string? GroupDes { get; set; }

@@ -9,6 +9,7 @@
     padding-right: 8px;
     padding-left: 8px;
     border-radius: 6px;
+
 }
 
 .in-green {
@@ -61,6 +62,7 @@
 body {
     font-family: vazir-bold;
     direction: rtl;
+
 }
 
 
@@ -68,7 +70,7 @@ body {
 
 .admin-containerr {
     min-height: 100vh !important;
-    background-color: #2196f3;
+    background-color: #151515;
 }
 
 .list-help-panel {
@@ -89,12 +91,12 @@ body {
         list-style-type:none;
     }
 
-    
+
 
 
 
         .list-help-panel li:hover {
-            background-color: var(--white);
+            background-color: #f07900;
             border-bottom-right-radius: 14px;
             border-top-right-radius: 14px;
         }
@@ -112,7 +114,7 @@ body {
                 background-color: transparent;
                 border-radius: 50%;
                 transform: rotate(90deg);
-                box-shadow: 35px 35px 0 10px var(--white);
+                box-shadow: 35px 35px 0 10px #f07900;
                 pointer-events: none;
             }
 
@@ -129,26 +131,26 @@ body {
                 background-color: transparent;
                 border-radius: 50%;
                 transform: rotate(-180deg);
-                box-shadow: 35px 35px 0 10px var(--white);
+                box-shadow: 35px 35px 0 10px #f07900;
                 pointer-events: none;
             }
 
 
 
 
-        .list-help-panel li a {
+        .list-help-panel li a{
             text-decoration: none;
             display: block;
             padding: 8px;
-            color: black;
+            color: white;
             margin-right: 4px;
         }
 
 
 
 
-            .list-help-panel li a:hover {
-                color: orangered;
+            .list-help-panel li a:hover{
+                color: white;
             }
 
 
@@ -158,7 +160,7 @@ body {
 .renderBox {
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    background-color: var(--white)
+    background-color: #f07900;
 }
 
 
@@ -168,17 +170,20 @@ body {
     min-height: 100vh;
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
-    background-color: var(--white);
+    background-color: #f07900;
 }
 
 
 
 
 .panel-help {
-    background-color: #2196f3;
+    background-color: #151515;
 }
 
 
+.icons {
+    color: gold;
+}
 
 
 
