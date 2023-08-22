@@ -2,6 +2,7 @@
 
 @foreach (var item in Model)
 {
-    <div>میخواهیم گروه هارا به صورت ردیف سه تایی نمایش دهد در باکس های مختلف</div>
+    @*میخواهیم گروه هارا به صورت ردیف سه تایی نمایش دهد در باکس های مختلف*@
+
     <li><a asp-area="" asp-controller="exam" asp-action="StartExam" asp-route-id="@item.Id">@item.GroupName</a></li>
 }

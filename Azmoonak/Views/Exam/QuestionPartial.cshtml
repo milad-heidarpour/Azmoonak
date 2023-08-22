@@ -1,16 +1,50 @@
-﻿@model IEnumerable<Azmoonak.Database.Models.Question>
+﻿@*@model IEnumerable<Azmoonak.Database.Models.Question>
+
+
 <form asp-controller="exam" asp-action="StartExam" class="q-right" dir="rtl">
     @for (int i = 0; i < Model.Count(); i++)
     {
         <!--related Question -->
         <div class="bg-q">
 
-            <input name="[@i].QText" value="@Model.ElementAt(i).QText">
+            <h2 class="q-question">@Model.ElementAt(i).QText</h2>
+            <span class="q-form"><input type="radio" name="fav_language">الف)@Model.ElementAt(i).AnOne</span><hr>
+            <span class="q-form"><input type="radio" name="fav_language">ب)@Model.ElementAt(i).AnTwo</span><hr>
+            <span class="q-form"><input type="radio" name="fav_language">ج)@Model.ElementAt(i).AnThree</span><hr>
+            <span class="q-form"><input type="radio" name="fav_language">د)@Model.ElementAt(i).AnFour</span><hr>
+            
+        </div>
+    }
+
+    <button type="submit">ارسال</button>
+</form>*@
+
+
+
+@model IEnumerable<Azmoonak.Database.Models.Question>
+<form asp-controller="exam" asp-action="StartExam" class="q-right" dir="rtl">
+    @for (int i = 0; i < Model.Count(); i++)
+    {
+        <!--related Question -->
+        <div class="bg-q">
+
+            <h2 class="q-question">@Model.ElementAt(i).QText</h2>
+            <span class="q-form"><span class="q-alpha"><input type="radio" id="anone" name="browser" onclick="myFunction(this.value)" value="@Model.ElementAt(i).AnOne">الف) @Model.ElementAt(i).AnOne </span></span><hr>
+            <span class="q-form"><span class="q-alpha"><input type="radio" id="antwo" name="browser" onclick="myFunction(this.value)" value="@Model.ElementAt(i).AnTwo">ب) @Model.ElementAt(i).AnTwo </span></span><hr>
+            <span class="q-form"><span class="q-alpha"><input type="radio" id="anthree" name="browser" onclick="myFunction(this.value)" value="@Model.ElementAt(i).AnThree">ج) @Model.ElementAt(i).AnThree </span></span><hr>
+            <span class="q-form"><span class="q-alpha"><input type="radio" id="anfour" name="browser" onclick="myFunction(this.value)" value="@Model.ElementAt(i).AnFour">د) @Model.ElementAt(i).AnFour </span></span><hr>
+
+            <span class="q-form"><input type="text" id="result">جواب کاربر)</span><hr>
 
         </div>
     }
 
-
-
     <button type="submit">ارسال</button>
+
+    <script>
+        function myFunction(browser) {
+            document.getElementById("result").value = browser;
+        }
+    </script>
 </form>
+

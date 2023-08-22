@@ -5,8 +5,20 @@
     <h1 id="text-autoType" class="bg-danger text-AutoType"></h1>
     <div class="register-buttons d-flex align-items-end justify-content-start">
         <div class="group-login mb-5">
-            <a asp-controller="profile" asp-action="Index" class="hover-btn btn-login me-3 border-0 text-white rounded-2">ورود</a>
-            <a asp-controller="account" asp-action="register" class="hover-btn btn-register me-3 border-0 text-white rounded-2">ثبت نام</a>
+            @{
+                if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-controller="profile" asp-action="Index" class="hover-btn btn-login me-3 border-0 text-white rounded-2">ورود</a>
+                    <a asp-controller="account" asp-action="register" class="hover-btn btn-register me-3 border-0 text-white rounded-2">ثبت نام</a>
+                }
+                else
+                {
+                    <a asp-controller="account" asp-action="login" class="hover-btn btn-login me-3 border-0 text-white rounded-2">ورود</a>
+                    <a asp-controller="account" asp-action="register" class="hover-btn btn-register me-3 border-0 text-white rounded-2">ثبت نام</a>
+                }
+            }
+
+
         </div>
     </div>
 

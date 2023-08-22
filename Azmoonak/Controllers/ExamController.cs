@@ -40,7 +40,7 @@ public class ExamController : Controller
     }
 
     [HttpPost, ValidateAntiForgeryToken]
-    public async Task<IActionResult> StartExam(List<Question> questions)
+    public async Task<IActionResult> StartExam(List<Question> useranswer)
     {
         return View();
     }

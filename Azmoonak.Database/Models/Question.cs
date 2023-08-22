@@ -34,6 +34,9 @@ public class Question
     [Display(Name = "گزینه درست")]
     public string CorrectAn { get; set; }
 
+    [Display(Name = "جواب کاربر")]
+    public string? UserAn { get; set; } = null;
+
     [Required(ErrorMessage = "لطفا گروه مد نظر خود راانتخاب نمایید")]
     [Display(Name = "انتخاب گروه")]
     public int GroupId { get; set; }

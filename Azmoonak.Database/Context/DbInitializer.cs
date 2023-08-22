@@ -46,10 +46,6 @@ namespace Azmoonak.Database.Context
             };
             _modelBuilder.Entity<User>().HasData(adminUser);
 
-
-
-
-
             // Create Groups and get migration... 
         }
     }
