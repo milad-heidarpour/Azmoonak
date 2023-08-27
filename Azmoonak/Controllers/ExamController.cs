@@ -14,7 +14,7 @@ public class ExamController : Controller
         _group = group;
         _question = question;
     }
-    public async Task< IActionResult> ShowExamGroups()
+    public async Task<IActionResult> ShowExamGroups()
     {
         var groups = await _group.GetGroups();
 
@@ -39,9 +39,26 @@ public class ExamController : Controller
         return View(viewModel);
     }
 
+    //[HttpPost, ValidateAntiForgeryToken]
+    //public async Task<IActionResult> StartExam(List<Question> useranswer)
+    //{
+
+    //    return View();
+    //}
+
     [HttpPost, ValidateAntiForgeryToken]
-    public async Task<IActionResult> StartExam(List<Question> useranswer)
+    public async Task<IActionResult> EndExam(List<Question> userAn)
     {
-        return View();
+        double score = 0;
+
+        foreach (var item in userAn)
+        {
+            if (item.UserAn == item.CorrectAn)
+            {
+                score += 2.5;
+            }
+        }
+        ViewBag.Score = score;
+        return View(score);
     }
 }

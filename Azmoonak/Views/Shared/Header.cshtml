@@ -9,9 +9,21 @@
             </div>
             <div class="d-none col-md-6 d-md-flex align-items-center">
                 <ul class="d-flex menu-ul mx-auto">
-                    <a asp-area="" asp-controller="exam" asp-action="showexamgroups" class="list-menu">
-                        آزمون آنلاین
-                    </a>
+                    @{
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <a asp-area="" asp-controller="exam" asp-action="showexamgroups" class="list-menu">
+                                آزمون آنلاین
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-area="" asp-controller="account" asp-action="login" class="list-menu">
+                                آزمون آنلاین
+                            </a>
+                        }
+                    }
+                    
 
                     <li id="proposal-menu" class="list-menu">
                         پیشنهادی
