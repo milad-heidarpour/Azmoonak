@@ -9,10 +9,12 @@ public class ExamController : Controller
 {
     IGroup _group;
     IQuestion _question;
-    public ExamController(IGroup group, IQuestion question)
+    IProfile _profile;
+    public ExamController(IGroup group, IQuestion question, IProfile profile)
     {
         _group = group;
         _question = question;
+        _profile = profile;
     }
     public async Task<IActionResult> ShowExamGroups()
     {
@@ -39,16 +41,12 @@ public class ExamController : Controller
         return View(viewModel);
     }
 
-    //[HttpPost, ValidateAntiForgeryToken]
-    //public async Task<IActionResult> StartExam(List<Question> useranswer)
-    //{
-
-    //    return View();
-    //}
 
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> EndExam(List<Question> userAn)
     {
+        ViewBag.OnlineUser = await _profile.GetUser(User.Identity.Name);
+
         double score = 0;
 
         foreach (var item in userAn)

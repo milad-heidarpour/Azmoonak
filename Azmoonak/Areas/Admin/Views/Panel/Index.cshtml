@@ -1,32 +1,16 @@
-﻿@model IEquatable<Azmoonak.Core.ViewModels.GroupQuestionViewModel>
+﻿@model Azmoonak.Database.Models.Group
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_PanelLayout.cshtml";
 }
 
+
 <div class="col-div-4-1">
-    <div class="box">
-        <h3 class="head-1">تعداد سوالات</h3>
-        <h4 class="number">@ViewBag.Question</h4>
-        <a asp-area="admin" asp-controller="questions" asp-action="index" class="head-1" style="background:green;color:black;border-radius:10px;padding:5px; text-decoration:none;">جزئیات بیشتر</a>
+    <div class="col-4   ">
+        <h3>تعداد سوالات از گروه :</h3>
+        <select asp-for="Id" class="form-control border-black bg-warning border-4" asp-items="ViewBag.GroupId" ><option selected disabled>---Select Group---</option></select>
+        <h3>@ViewBag.QuestionCount</h3>
     </div>
 </div>
 
-
-<div class="col-div-4-1">
-    <div class="box">
-        <h3>تعداد کل گروه ها </h3>
-        <h4> @ViewBag.Group</h4>
-        <a asp-area="admin" asp-controller="groups" asp-action="index" style="background:green;color:black;border-radius:10px;padding:5px; text-decoration:none;">جزئیات بیشتر</a>
-    </div>
-</div>
-
-
-<div class="col-div-4-1">
-    <div class="box">
-        <h3>تعداد کل کاربران</h3>
-        <h4>Not Found</h4>
-        <a asp-area="admin" asp-controller="groups" asp-action="index" style="background:green;color:black;border-radius:10px;padding:5px; text-decoration:none;">جزئیات بیشتر</a>
-    </div>
-</div>

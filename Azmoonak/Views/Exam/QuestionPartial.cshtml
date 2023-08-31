@@ -1,37 +1,41 @@
 ﻿@model IEnumerable<Azmoonak.Database.Models.Question>
 
 <form asp-controller="exam" asp-action="EndExam" class="q-right" dir="rtl">
-    @for (int i = 0; i < Model.Count(); i++)
-    {
-        <!--related Question -->
-        <div class="bg-q">
+    @{
+        int n = 1;
+        for (int i = 0; i < Model.Count(); i++)
+        {
+            <!--related Question -->
+            <div class="bg-q">
 
-            <h2 class="q-question">@Model.ElementAt(i).QText</h2>
-            <span class="q-form"><span class="q-alpha"><input type="radio" id="anone" name="browser" onclick="myFunction(this.value)" value="@Model.ElementAt(i).AnOne">الف) @Model.ElementAt(i).AnOne </span></span><hr>
-            <span class="q-form"><span class="q-alpha"><input type="radio" id="antwo" name="browser" onclick="myFunction(this.value)" value="@Model.ElementAt(i).AnTwo">ب) @Model.ElementAt(i).AnTwo </span></span><hr>
-            <span class="q-form"><span class="q-alpha"><input type="radio" id="anthree" name="browser" onclick="myFunction(this.value)" value="@Model.ElementAt(i).AnThree">ج) @Model.ElementAt(i).AnThree </span></span><hr>
-            <span class="q-form"><span class="q-alpha"><input type="radio" id="anfour" name="browser" onclick="myFunction(this.value)" value="@Model.ElementAt(i).AnFour">د) @Model.ElementAt(i).AnFour </span></span><hr>
+                <h2 class="q-question">@Model.ElementAt(i).QText</h2>
+                <span class="q-form"><span class="q-alpha"><input type="radio" id='@("anone-"+@n)' name="browser" onclick="myFunction(this.value,@n)" value="@Model.ElementAt(i).AnOne">الف) @Model.ElementAt(i).AnOne </span></span><hr>
+                <span class="q-form"><span class="q-alpha"><input type="radio" id='@("antwo-"+@n)' name="browser" onclick="myFunction(this.value,@n)" value="@Model.ElementAt(i).AnTwo">ب) @Model.ElementAt(i).AnTwo </span></span><hr>
+                <span class="q-form"><span class="q-alpha"><input type="radio" id='@("anthree-"+@n)' name="browser" onclick="myFunction(this.value,@n)" value="@Model.ElementAt(i).AnThree">ج) @Model.ElementAt(i).AnThree </span></span><hr>
+                <span class="q-form"><span class="q-alpha"><input type="radio" id='@("anfour-"+@n)' name="browser" onclick="myFunction(this.value,@n)" value="@Model.ElementAt(i).AnFour">د) @Model.ElementAt(i).AnFour </span></span><hr>
 
-            @* <span class="q-form"><input type="text" id="result">جواب کاربر)</span><hr> *@
 
-            <input name="[@i].Id" value="@Model.ElementAt(i).Id" readonly hidden>
-            <input name="[@i].QText" value="@Model.ElementAt(i).QText" readonly hidden>
-            <input name="[@i].AnOne" value="@Model.ElementAt(i).AnOne" readonly hidden>
-            <input name="[@i].AnTwo" value="@Model.ElementAt(i).AnTwo" readonly hidden>
-            <input name="[@i].AnThree" value="@Model.ElementAt(i).AnThree" readonly hidden>
-            <input name="[@i].AnFour" value="@Model.ElementAt(i).AnFour" readonly hidden>
-            <input name="[@i].CorrectAn" value="@Model.ElementAt(i).CorrectAn" readonly hidden>
-            <input name="[@i].UserAn" value="@Model.ElementAt(i).UserAn">
-            <input name="[@i].Group" value="@Model.ElementAt(i).GroupId" readonly hidden>
+                <input name="[@i].Id" value="@Model.ElementAt(i).Id" readonly hidden>
+                <input name="[@i].QText" value="@Model.ElementAt(i).QText" readonly hidden>
+                <input name="[@i].AnOne" value="@Model.ElementAt(i).AnOne" readonly hidden>
+                <input name="[@i].AnTwo" value="@Model.ElementAt(i).AnTwo" readonly hidden>
+                <input name="[@i].AnThree" value="@Model.ElementAt(i).AnThree" readonly hidden>
+                <input name="[@i].AnFour" value="@Model.ElementAt(i).AnFour" readonly hidden>
+                <input name="[@i].CorrectAn" value="@Model.ElementAt(i).CorrectAn" readonly hidden>
+                <input name="[@i].UserAn" value="@Model.ElementAt(i).UserAn" id='@("result-"+@n)'>
+                <input name="[@i].Group" value="@Model.ElementAt(i).GroupId" readonly hidden>
 
-        </div>
+            </div>
+
+            n++;
+
+        }
     }
-
-    <button type="submit">ارسال</button>
+    <button class="btn btn-success" type="submit">ارسال</button>
 
     <script>
-        function myFunction(browser) {
-            document.getElementById("result").value = browser;
+        function myFunction(browser,n) {
+            document.getElementById("result-"+n).value = browser;
         }
     </script>
 </form>

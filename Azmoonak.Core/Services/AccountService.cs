@@ -38,6 +38,8 @@ public class AccountService:IAccount
             {
                 Id = Guid.NewGuid(),
                 RoleId = _context.Roles.SingleOrDefault(r => r.RoleName == "user").Id,
+                FName=register.FName,
+                LName=register.LName,
                 Mobile = register.Mobile,
                 Password = await new Security().HashPassword(await new Security().HashPassword(register.Password)),
                 IsActive = true

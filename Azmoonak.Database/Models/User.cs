@@ -22,6 +22,15 @@ namespace Azmoonak.Database.Models
         public Guid RoleId { get; set; }
 
         [Required]
+        [Display(Name = "نام")]
+        public string FName { get; set; }
+
+        [Required]
+        [Display(Name = "نام خانوادگی")]
+        public string LName { get; set; }
+
+
+        [Required]
         [Display(Name = "شماره موبایل")]
         [MaxLength(11)]
         [MinLength(11)]

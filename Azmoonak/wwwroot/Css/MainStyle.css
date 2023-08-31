@@ -362,26 +362,6 @@ body {
 }
 
 
-
-
-/*______navigation_____style___ */
-
-
-
-
-/*________________________________________animation text H1 auto typing*/
-
-
-
-
-/*.text-AutoType{
-    display:inline-block;
-    position:absolute;
-    top:130px;
-    right:100px;
-    width:auto;
-}*/
-/*______navigation_____style___ */
 .background-header {
     width: 65%;
     height: 100%;
@@ -950,3 +930,43 @@ body {
     .bg-q .q-right .q-left a .in-red:hover {
         background-color: rgb(104, 0, 0);
     }
+
+
+
+
+
+
+
+/*برای لاگین و ریجستر کد های آریا*/
+
+.box-area {
+    width: 915px;
+    border-radius: 12px;
+}
+
+.right-box {
+    padding: 40px 30px 40px 40px;
+}
+
+.left-box {
+    border-radius: 12px;
+}
+
+::placeholder {
+    font-size: 16px;
+}
+
+@media only screen and (max-width:768px) {
+    .box-area {
+        margin: 0 10px;
+    }
+
+    .left-box {
+        height: 0px;
+        overflow: hidden;
+    }
+
+    .right-box {
+        padding: 20px;
+    }
+}

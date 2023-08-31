@@ -5,26 +5,37 @@
     Layout = "~/Views/Shared/_AccountLayout.cshtml";
 }
 
+<form asp-controller="account" asp-action="login">
+    <div class="container d-flex justify-content-center align-items-center min-vh-100" >
+        <div class="row border rounder-5 p-3 bg-white shadow box-area">
+            <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background:#0568fd">
+                <div class="featured-image mb-3">
+                    <img style="width: 250px;" src="~/Image/LoginRegister/Login.png" class="img-fluid">
+                </div>
+                <p class="text-white fs-2" style="font-weight: 600;">Login</p>
+                <small class="text-white text-wrap text-center" style="width: 17rem;">باید یه متن جدید اضافه کنم</small>
+            </div>
 
-<div class="account-form col-md-4 col-sm-6 col-11 mt-5">
-    <form asp-controller="account" asp-action="login">
-        <h1>Login</h1>
-        <hr class="w-75" />
-        <div asp-validation-summary="ModelOnly" class="text-warning"></div>
-        <div class="form-group">
-            <label asp-for="Mobile" class="control-label"></label>
-            <input asp-for="Mobile" class="form-control" />
-            <span asp-validation-for="Mobile" class="text-warning"></span>
+            <div class="col-md-6 right-box" >
+                <div class="row align-items-center">
+                    <div class="header-text mb-4 text-center">
+                        <h2>Login Page</h2>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input asp-for="Mobile" class="form-control form-control-lg bg-light fs6" placeholder="Phone Number">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input asp-for="Password" class="form-control form-control-lg bg-light fs6" placeholder="Your password">
+                    </div>
+
+                    <div class="inpute-group mb-3">
+                        <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Login</button>
+                    </div>
+                    <div class="row">
+                        <small>Don't have account? <a asp-action="Register">Sign Up</a></small>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label asp-for="Password" class="control-label"></label>
-            <input asp-for="Password" class="form-control" />
-            <span asp-validation-for="Password" class="text-warning"></span>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="form-control">Login</button>
-            <hr class="w-75" />
-            <a asp-action="register"><span class="fa fa-sign-in"></span>Register</a>
-        </div>
-    </form>
-</div>
+    </div>
+</form>

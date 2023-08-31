@@ -10,6 +10,12 @@ namespace Azmoonak.Core.ViewModels;
 
 public class RegisterViewModel
 {
+    [Display(Name = "نام",Prompt ="نام خود را وارد کنید")]
+    public string FName { get; set; }
+
+    [Display(Name = "نام خانوادگی", Prompt = "نام خانوادگی خود را وارد کنید")]
+    public string LName { get; set; }
+
     [Display(Name = "Mobile", Prompt = "شماره موبایل 11 رقمی")]
     [MaxLength(11, ErrorMessage = "شماره موبایل 11 رقمی")]
     [MinLength(11, ErrorMessage = "شماره موبایل 11 رقمی")]

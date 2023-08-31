@@ -26,6 +26,8 @@ public class ProfileService:IProfile
         var user =await _context.Users.Where(u => u.Mobile == userMobile).Select(s => new User()
         {
             Id = s.Id,
+            FName=s.FName,
+            LName=s.LName,
             Mobile = s.Mobile,
             IsActive = s.IsActive,
             Role = new Role()
