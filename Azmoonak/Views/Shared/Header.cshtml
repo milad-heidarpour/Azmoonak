@@ -12,13 +12,13 @@
                     @{
                         if (User.Identity.IsAuthenticated)
                         {
-                            <a asp-area="" asp-controller="exam" asp-action="showexamgroups" class="list-menu">
+                            <a asp-area="" asp-controller="exam" asp-action="showexamgroups" class="list-menu text-decoration-none">
                                 آزمون آنلاین
                             </a>
                         }
                         else
                         {
-                            <a asp-area="" asp-controller="account" asp-action="login" class="list-menu">
+                            <a asp-area="" asp-controller="account" asp-action="login" class="list-menu text-decoration-none">
                                 آزمون آنلاین
                             </a>
                         }

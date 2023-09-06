@@ -41,9 +41,9 @@ namespace Azmoonak.Database.Models
         public string Password { get; set; }
 
 
-        [MaxLength(4)]
-        [MinLength(4)]
-        public int Code { get; set; }
+        //[MaxLength(4)]
+        //[MinLength(4)]
+        //public int Code { get; set; }
 
 
         [Display(Name = "وضعیت کاربر")]

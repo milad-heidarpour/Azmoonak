@@ -1,9 +1,59 @@
-﻿
+﻿@model Azmoonak.Core.ViewModels.QuestionUserViewModel
+
 @{
     ViewData["Title"] = "EndExam";
     Layout = "~/Views/Shared/_ExamLayout.cshtml";
 }
 
-<h5></h5>
-<h1>@ViewBag.Score</h1>
+
+
+<h1>شرکت کننده : @Model.User.FName @Model.User.LName</h1>
+<h1>نمره نهایی : @Model.Score</h1>
+<h1>تعداد جواب های درست : @Model.CorrectAnswer</h1>
+<h1>تعداد جواب های غلط : @Model.FalseAnswer</h1>
+<h1>بدون پاسخ ها : @Model.NoAnswer</h1>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+    <title>Pie Chart</title>
+</head>
+<body>
+    <div dir="rtl" class="col-5" id="chartContainer"></div>
+    <script type="text/javascript">
+        window.onload = function () {
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                legend: {
+                    verticalAlign: "center",
+                    horizontalAlign: "left",
+                    fontSize: 10,
+                    fontFamily: "vazir-bold"
+                },
+                theme: "light",
+                data: [
+                    {
+                        type: "pie",
+                        indexLabelFontFamily: "vazir-bold",
+                        indexLabelFontSize: 15,
+                        indexLabel: "{label} {y}",
+                        startAngle:-20,
+                        showInLegend: false,
+                        toolTipContent: "{legendText} {y}",
+                        dataPoints: [
+                            { y: @Model.NoAnswer, legendText: "بدون پاسخ ها :", label: "بدون پاسخ ها :" },
+                            { y: @Model.FalseAnswer, legendText: "جواب های غلط :", label: "جواب های غلط :" },
+                            { y: @Model.CorrectAnswer, legendText: "جواب های درست :", label: "جواب های درست :" },
+                        ]
+                    }
+                ]
+            });
+            chart.render();
+        };
+    </script>
+
+</body>
+</html>
+
 

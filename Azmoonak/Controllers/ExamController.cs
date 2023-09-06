@@ -2,6 +2,7 @@
 using Azmoonak.Core.ViewModels;
 using Azmoonak.Database.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Principal;
 
 namespace Azmoonak.Controllers;
 
@@ -30,8 +31,17 @@ public class ExamController : Controller
     //its about how to start test 
     public async Task<IActionResult> StartExam(int id)//id = groupid
     {
-        var questions = await _question.GetGroupQuestions(id);
+        var questions = (await _question.GetGroupQuestions(id)).Take(40);
         var groups = await _group.GetGroups();
+
+        //List<Question> _randomQuestion = new List<Question>();
+        //Random r = new Random();
+
+        //for (int i = 0; i <=40 ; i++)
+        //{
+        //    List<Question> indxlst = new List<Question>(r.Next(questions.Count()));
+        //    _randomQuestion = indxlst;
+        //}
 
         GroupQuestionViewModel viewModel = new GroupQuestionViewModel()
         {
@@ -45,18 +55,52 @@ public class ExamController : Controller
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> EndExam(List<Question> userAn)
     {
-        ViewBag.OnlineUser = await _profile.GetUser(User.Identity.Name);
+        var user = await _profile.GetUser(User.Identity.Name);
 
-        double score = 0;
+        double _score = 0;
+        int _correctAnswer = 0;
+        int _falseAnswer = 0;
+        int _noAnswer = 0;
+
 
         foreach (var item in userAn)
         {
             if (item.UserAn == item.CorrectAn)
             {
-                score += 2.5;
+                _score += 2.5;
+                _correctAnswer++;
+            }
+            else if (item.UserAn!= item.CorrectAn && item.UserAn!=null)
+            {
+                _falseAnswer++;
+            }
+            else if (item.UserAn==null)
+            {
+                _noAnswer++;
             }
         }
-        ViewBag.Score = score;
-        return View(score);
+
+        QuestionUserViewModel viewModel = new QuestionUserViewModel()
+        {
+            Question = userAn,
+            User = user,
+            Score = _score,
+            CorrectAnswer = _correctAnswer,
+            FalseAnswer = _falseAnswer,
+            NoAnswer = _noAnswer
+        };
+        return View(viewModel);
     }
+
+    public async Task<IActionResult> Details(int id)
+    {
+        var group = await _group.GetGroup(id);
+        if (group != null)
+        {
+            return View(group);
+        }
+        //return NotFound();
+        return RedirectToAction(nameof(ShowExamGroups));
+    }
+
 }

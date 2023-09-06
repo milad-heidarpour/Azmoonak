@@ -8,15 +8,19 @@ public class HomeController : Controller
 {
     IGroup _group;
     IQuestion _question;
-    public HomeController(IGroup group, IQuestion question)
+    IAccount _account;
+    public HomeController(IGroup group, IQuestion question, IAccount account)
     {
         _group = group;
         _question = question;
-
+        _account = account;
     }
     public async Task<IActionResult> Index()
     {
         var groups= await _group.GetGroups();
+        ViewBag.UserCount= (await _account.GetUsers()).Count;
+        ViewBag.QuestionCount= (await _question.GetQuestions()).Count;
+        ViewBag.GroupCount=groups.Count;
 
         GroupQuestionViewModel viewModel = new GroupQuestionViewModel()
         {

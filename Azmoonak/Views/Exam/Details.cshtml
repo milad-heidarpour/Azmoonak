@@ -1,0 +1,22 @@
+﻿@model Azmoonak.Database.Models.Group
+
+@* @{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_ExamLayout.cshtml";
+} *@
+
+@* <a asp-area="" asp-controller="exam" asp-action="startexam" >برای شروع آزمون کلیک کنید</a>*@
+
+<div>
+    <h5>دسته بندی آزمون : @Model.GroupName</h5>
+    <h5>مدت زمان آزمون : 40 دقیقه</h5>
+    <h5>تعداد سوالات : 40 </h5>
+    <h5>باید متن های بیشتری اضافه کنم</h5>
+    <hr />
+    <h4 class="text-danger text-center">آیا آزمون را شروع میکنید؟</h4>
+    <form asp-area="" asp-controller="exam" asp-action="startexam" asp-route-id="@Model.Id" class="text-center">
+        <input asp-for="Id" hidden />
+        <button class="btn btn-success">Yes</button>
+        <a asp-controller="exam" asp-action="showexamgroups" class="btn btn-danger">No</a>
+    </form>
+</div>

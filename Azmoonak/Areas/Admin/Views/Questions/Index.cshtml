@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_PanelLayout.cshtml";
 }
 
-<h1 class="text-center">ثبت سوالات جدید</h1>
+<h1 class="text-center">سوالات</h1>
 
 <p>
     <a asp-action="Create" class="btn btn-success me-4"><span class="fa fa-plus-circle fa-lg "></span> Create New</a>
@@ -63,13 +63,15 @@
                 @Html.DisplayFor(modelItem => item.Group.GroupName)
             </td>*@
             <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><span class="fa fa-edit"></span> Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info"><span class="fa fa-info"></span> Details</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><span class="fa fa-edit"></span></a>
+                    @* <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info"><span class="fa fa-info"></span> Details</a> | *@
                     <a data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete('@(item.Id)')" class="btn btn-danger"><span class="fa fa-trash-o"></span></a>
                     
             </td>
         </tr>
 }
+
+            
     </tbody>
 </table>
 </div>
@@ -94,7 +96,6 @@
 
 
 <script>
-
     const myModal = document.getElementById('myModal')
     const myInput = document.getElementById('myInput')
 

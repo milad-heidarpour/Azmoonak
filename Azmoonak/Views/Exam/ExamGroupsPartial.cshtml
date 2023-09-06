@@ -2,7 +2,38 @@
 
 @foreach (var item in Model)
 {
-    @*میخواهیم گروه هارا به صورت ردیف سه تایی نمایش دهد در باکس های مختلف*@
-
-    <li><a asp-area="" asp-controller="exam" asp-action="StartExam" asp-route-id="@item.Id">@item.GroupName</a></li>
+    <li><a asp-area="" asp-controller="exam" asp-action="details" asp-route-id="@item.Id" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Details('@(item.Id)')"> @item.GroupName</a></li>
 }
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="modalBody" class="modal-body">
+                ...
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    const myModal = document.getElementById('myModal')
+    const myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', () => {
+        myInput.focus()
+    })
+    function Details(groupid) {
+        $.ajax({
+            url: '/exam/details',
+            type: 'get',
+            data: {/*controller parameter*/  id: groupid /*send parameter*/ },
+            success: (result) => {
+                document.getElementById('modalBody').innerHTML = result;
+            }
+        })
+    }
+
+</script>

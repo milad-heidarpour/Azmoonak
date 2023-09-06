@@ -5,9 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_PanelLayout.cshtml";
 }
 
-<h1 class=" text-center">Create</h1>
-
-<h4 class="text-center">Group</h4>
+<h1 class=" text-center mt-2">افزودن گروه جدید</h1>
 <hr />
 <div class="row">
     <div class="col-md-5">
@@ -15,27 +13,27 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="GroupName" class="control-label"></label>
-                <input asp-for="GroupName" class="form-control" />
+                <input asp-for="GroupName" class="form-control border-black border-4 mt-2" />
                 <span asp-validation-for="GroupName" class="text-danger"></span>
             </div>
             <div class="form-group m">
                 <label asp-for="GroupDes" class="control-label"></label>
-                <textarea asp-for="GroupDes" class="form-control" ></textarea>
+                <textarea asp-for="GroupDes" class="form-control border-black border-4 mt-2"></textarea>
                 <span asp-validation-for="GroupDes" class="text-danger"></span>
             </div>
             <div class="form-group form-check m-3">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="NotShow" /> @Html.DisplayNameFor(model => model.NotShow)
+                    <input class="form-check-input " asp-for="NotShow" /> @Html.DisplayNameFor(model => model.NotShow)
                 </label>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-success" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-danger mt-3 ">Back to List</a>
 </div>
 

@@ -44,18 +44,17 @@
 </div>
 <div>
     
-    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning"><span class="fa fa-edit"></span>Edit</a> |
-    <a asp-action="Index" class="btn btn-outline-info"><span class="fa fa-arrow-left"></span>Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning"><span class="fa fa-edit"></span> Edit</a> |
+    <a asp-action="Index" class="btn btn-danger"><span class="fa fa-arrow-left"></span> Back to List</a>
     <hr />
-    <h1>تعداد سوالات از این دسته بندی : @ViewBag.QuestionCount</h1>
-    <hr />
+    <h5>تعداد سوالات از این دسته بندی : @ViewBag.QuestionCount</h5>
     @*related Question*@
     @{
         var questions = ViewBag.RelatedQuestion;
         if (questions != null && questions.Count > 0)
         {
             <div class=" col-12 p-3"></div>
-            <h1>سوالات مشابه از دسته بندی @Model.GroupName</h1>
+            <h5>سوالات از دسته بندی @Model.GroupName</h5>
             <hr />
             <partial name="QuestionPartial" model="questions" />
         }

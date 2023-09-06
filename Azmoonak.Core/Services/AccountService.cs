@@ -4,6 +4,8 @@ using Azmoonak.Database.Classes;
 using Azmoonak.Database.Context;
 using Azmoonak.Database.Models;
 using Microsoft.EntityFrameworkCore;
+using static System.Console;
+using static System.ConsoleColor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Azmoonak.Core.Services;
 
-public class AccountService:IAccount
+public class AccountService : IAccount
 {
     private readonly DatabaseContext _context;
     public AccountService(DatabaseContext context)
@@ -25,7 +27,7 @@ public class AccountService:IAccount
         try
         {
 
-            // suer mobile exist or not
+            // sure mobile exist or not
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Mobile == register.Mobile);
             if (user != null)
             {
@@ -38,8 +40,8 @@ public class AccountService:IAccount
             {
                 Id = Guid.NewGuid(),
                 RoleId = _context.Roles.SingleOrDefault(r => r.RoleName == "user").Id,
-                FName=register.FName,
-                LName=register.LName,
+                FName = register.FName,
+                LName = register.LName,
                 Mobile = register.Mobile,
                 Password = await new Security().HashPassword(await new Security().HashPassword(register.Password)),
                 IsActive = true
@@ -54,12 +56,71 @@ public class AccountService:IAccount
             return false;
         }
     }
+
+    public async Task<bool> DeleteUser(Guid UserId)
+    {
+        try
+        {
+            var user = _context.Users.Find(UserId);
+            if (user != null)
+            {
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
+                return await Task.FromResult(true);
+            }
+            return await Task.FromResult(false);
+
+        }
+        catch (Exception error)
+        {
+            WriteLine(error.Message,
+                   BackgroundColor = Red,
+                   ForegroundColor = Yellow);
+            return await Task.FromResult(false);
+        }
+    }
+
     public void Dispose()
     {
         if (_context != null)
         {
             _context.Dispose();
         }
+    }
+
+    public async Task<bool> EditUser(User user)
+    {
+        try
+        {
+            _context.Update(user);
+            await _context.SaveChangesAsync();
+            return await Task.FromResult(true);
+        }
+        catch (Exception error)
+        {
+            Console.WriteLine(error.Message,
+                Console.BackgroundColor = ConsoleColor.Red,
+                Console.ForegroundColor = ConsoleColor.Yellow);
+            return await Task.FromResult(false);
+        }
+    }
+
+    public async Task<List<Role>> GetRoles()
+    {
+        var roles = await _context.Roles.Include(r=>r.Users).ToListAsync();
+        return await Task.FromResult(roles);
+    }
+
+    public async Task<User> GetUser(Guid UserId)
+    {
+        var user = await _context.Users.Include(u => u.Role).FirstOrDefaultAsync(u => u.Id == UserId);
+        return await Task.FromResult(user);
+    }
+
+    public async Task<List<User>> GetUsers()//just for users
+    {
+        var users = _context.Users.Include(u => u.Role).Where(u => u.Role.RoleName == "user").ToList();
+        return await Task.FromResult(users);
     }
 
     public async Task<User> LoginUser(LoginViewModel login)
