@@ -1,6 +1,7 @@
 ﻿using Azmoonak.Core.Interface;
 using Azmoonak.Core.ViewModels;
 using Azmoonak.Database.Models;
+using CarShop.Core.Classes;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Principal;
 
@@ -32,21 +33,12 @@ public class ExamController : Controller
     public async Task<IActionResult> StartExam(int id)//id = groupid
     {
         var questions = (await _question.GetGroupQuestions(id)).Take(40);
-        var groups = await _group.GetGroups();
-
-        //List<Question> _randomQuestion = new List<Question>();
-        //Random r = new Random();
-
-        //for (int i = 0; i <=40 ; i++)
-        //{
-        //    List<Question> indxlst = new List<Question>(r.Next(questions.Count()));
-        //    _randomQuestion = indxlst;
-        //}
+        TempData["GroupId"] = id;
 
         GroupQuestionViewModel viewModel = new GroupQuestionViewModel()
         {
             Questions = questions,
-            Groups = groups,
+            //Groups = groups,
         };
         return View(viewModel);
     }
@@ -55,6 +47,7 @@ public class ExamController : Controller
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> EndExam(List<Question> userAn)
     {
+
         var user = await _profile.GetUser(User.Identity.Name);
 
         double _score = 0;
@@ -79,6 +72,20 @@ public class ExamController : Controller
                 _noAnswer++;
             }
         }
+
+        Certificate certificate = new Certificate()
+        {
+            Id = Guid.NewGuid(),
+            UserId = user.Id,
+            FinalScore = _score,
+            GroupId = Convert.ToInt32(TempData["GroupId"]),
+            CorrectAnswer = _correctAnswer,
+            FalseAnswer = _falseAnswer,
+            NoAnswer = _noAnswer,
+            OpenDateTime = await new CoreClass().GetPersianDate(),
+        };
+        
+        var newCertificate =await _profile.AddCertificate(certificate);
 
         QuestionUserViewModel viewModel = new QuestionUserViewModel()
         {

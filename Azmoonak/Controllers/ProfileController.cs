@@ -1,4 +1,5 @@
 ﻿using Azmoonak.Core.Interface;
+using Azmoonak.Database.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,9 +9,11 @@ namespace Azmoonak.Controllers;
 public class ProfileController : Controller
 {
     IProfile _profile;
-    public ProfileController(IProfile profile)
+    IAccount _account;
+    public ProfileController(IProfile profile, IAccount account)
     {
         _profile = profile;
+        _account = account;
     }
     public async Task<IActionResult> Index()
     {
@@ -21,4 +24,12 @@ public class ProfileController : Controller
         }
         return View();
     }
+
+    public async Task<IActionResult> GetCertificate() //id=userid
+    {
+        var user = await _profile.GetUser(User.Identity.Name);
+        var certificate = await _profile.GetCertificate(user.Id);
+        return View(certificate);
+    }
+
 }

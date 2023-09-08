@@ -52,5 +52,7 @@ namespace Azmoonak.Database.Models
 
         [ForeignKey("RoleId")]//user -> role -> 1
         public virtual Role Role { get; set; }
+
+        public virtual ICollection<Certificate>? Certificates { get; set; }
     }
 }

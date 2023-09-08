@@ -28,4 +28,6 @@ public class Group
     [Display(Name = "عدم نمایش")]
     public bool NotShow { get; set; } = false;
     public virtual ICollection<Question>? Questions { get; set; }
+
+    public virtual ICollection<Certificate>? Certificates { get; set; }
 }

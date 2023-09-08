@@ -108,4 +108,5 @@ public class QuestionService : IQuestion
         var questions = _context.Questions.Include(q => q.Group).Where(q => q.Id != question.Id && q.GroupId == question.GroupId).ToList();
         return await Task.FromResult(questions);
     }
+
 }

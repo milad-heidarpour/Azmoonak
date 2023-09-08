@@ -4,6 +4,7 @@ using Azmoonak.Database.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Azmoonak.Database.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20230908111848_editcertificatemodel")]
+    partial class editcertificatemodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,8 +35,8 @@ namespace Azmoonak.Database.Migrations
                     b.Property<int>("FalseAnswer")
                         .HasColumnType("int");
 
-                    b.Property<double>("FinalScore")
-                        .HasColumnType("float");
+                    b.Property<int>("FinalScore")
+                        .HasColumnType("int");
 
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
@@ -148,13 +150,13 @@ namespace Azmoonak.Database.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("32f2d53f-1ab2-4fc4-bdeb-ef6718204148"),
+                            Id = new Guid("f76f1f7d-5cb9-4a3a-a330-fdb7e1e9e994"),
                             RoleName = "admin",
                             RoleTitle = "مدیر"
                         },
                         new
                         {
-                            Id = new Guid("2ad90754-f396-4949-a9a1-907c523ed7b1"),
+                            Id = new Guid("ac715fe8-8d4a-41dc-93b0-1362db073ff1"),
                             RoleName = "user",
                             RoleTitle = "کاربر"
                         });
@@ -197,13 +199,13 @@ namespace Azmoonak.Database.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8c79591c-cc73-4e99-a94c-24bd42e5deeb"),
+                            Id = new Guid("b97ae97e-a00e-46a5-8830-b6e2aa48e846"),
                             FName = "میلاد",
                             IsActive = true,
                             LName = "حیدرپور",
                             Mobile = "09030826556",
                             Password = "C4-65-39-0D-14-88-0E-D0-87-DC-E9-8C-CC-E7-D8-93",
-                            RoleId = new Guid("32f2d53f-1ab2-4fc4-bdeb-ef6718204148")
+                            RoleId = new Guid("f76f1f7d-5cb9-4a3a-a330-fdb7e1e9e994")
                         });
                 });
 

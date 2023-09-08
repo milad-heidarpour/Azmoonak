@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Azmoonak.Database.Models.Certificate>
+
+@{
+    ViewData["Title"] = "GetCertificate";
+    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
+}
+
+<h1>لیست امتحانات</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User.FName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.LName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Group.GroupName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinalScore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CorrectAnswer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FalseAnswer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoAnswer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OpenDateTime)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.FName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.LName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Group.GroupName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FinalScore)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CorrectAnswer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FalseAnswer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoAnswer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OpenDateTime)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

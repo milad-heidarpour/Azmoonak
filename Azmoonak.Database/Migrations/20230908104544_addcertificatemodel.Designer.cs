@@ -4,6 +4,7 @@ using Azmoonak.Database.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Azmoonak.Database.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20230908104544_addcertificatemodel")]
+    partial class addcertificatemodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,14 +29,18 @@ namespace Azmoonak.Database.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("CloseDateTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("CorrectAnswer")
                         .HasColumnType("int");
 
                     b.Property<int>("FalseAnswer")
                         .HasColumnType("int");
 
-                    b.Property<double>("FinalScore")
-                        .HasColumnType("float");
+                    b.Property<int>("FinalScore")
+                        .HasColumnType("int");
 
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
@@ -148,13 +154,13 @@ namespace Azmoonak.Database.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("32f2d53f-1ab2-4fc4-bdeb-ef6718204148"),
+                            Id = new Guid("5289daf2-e41e-4f3b-a02d-30e88e77be49"),
                             RoleName = "admin",
                             RoleTitle = "مدیر"
                         },
                         new
                         {
-                            Id = new Guid("2ad90754-f396-4949-a9a1-907c523ed7b1"),
+                            Id = new Guid("4fbb6b75-b043-45be-9b4b-4bd211f49a83"),
                             RoleName = "user",
                             RoleTitle = "کاربر"
                         });
@@ -197,13 +203,13 @@ namespace Azmoonak.Database.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8c79591c-cc73-4e99-a94c-24bd42e5deeb"),
+                            Id = new Guid("36dd50a8-9718-4b51-ae2b-af7516e79379"),
                             FName = "میلاد",
                             IsActive = true,
                             LName = "حیدرپور",
                             Mobile = "09030826556",
                             Password = "C4-65-39-0D-14-88-0E-D0-87-DC-E9-8C-CC-E7-D8-93",
-                            RoleId = new Guid("32f2d53f-1ab2-4fc4-bdeb-ef6718204148")
+                            RoleId = new Guid("5289daf2-e41e-4f3b-a02d-30e88e77be49")
                         });
                 });
 
