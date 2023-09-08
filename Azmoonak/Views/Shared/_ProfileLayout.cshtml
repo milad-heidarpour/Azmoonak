@@ -12,6 +12,7 @@
     <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 </head>
 <body>
+
     <div class="container-fluid  pt-4 pb-4 ps-4 admin-containerr">
         <div class="row w-100">
             <div class="col-2 panel-help p-0 m-0">
@@ -26,45 +27,22 @@
                         </a>
                     </li>
                     <li>
-                        <a asp-area="admin" asp-controller="panel" asp-action="index">
+                        <a href="#">
                             <span class="icons">
                                 <i class="fa fa-dashboard fa-lg"></i>
                             </span>
-                            <span class="title">داشبورد مدیر</span>
+                            <span class="title">داشبورد</span>
                         </a>
                     </li>
                     <li>
-                        <a asp-area="admin" asp-controller="panel" asp-action="GetUsers">
-                            <span class="icons">
-                                <i class="fa fa-users fa-lg"></i>
-                            </span>
-                            <span class="title">کاربران</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-controller="Groups" asp-action="Index">
+                        <a href="#">
                             <span class="icons">
                                 <i class="fa fa-list fa-lg" class="fa fa-list fa-lg"></i>
                             </span>
-                            <span class="title">دسته بندی ها</span>
+                            <span class="title">لیست امتحانات</span>
                         </a>
                     </li>
-                    <li>
-                        <a asp-controller="questions" asp-action="index">
-                            <span class="icons">
-                                <i class="fa fa-book fa-lg"></i>
-                            </span>
-                            <span class="title">سوالات</span>
-                        </a>
-                    </li>
-                    @* <li>
-                        <a href="#">
-                            <span class="icons">
-                                <i class="fa fa-gears fa-lg"></i>
-                            </span>
-                            <span class="title">تنظیمات</span>
-                        </a>
-                    </li> *@
+                    
                     <li>
                         <a asp-area="" asp-controller="account" asp-action="logout">
                             <span class="icons">
@@ -82,6 +60,9 @@
         </div>
     </div>
 
+    <div>
+        @RenderBody()
+    </div>
 </body>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>

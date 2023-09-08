@@ -8,8 +8,9 @@ public interface IAccount:IDisposable
     Task<bool> AddUser(RegisterViewModel register);
     Task<User> LoginUser(LoginViewModel login);
     Task<List<User>> GetUsers();
+    Task<List<User>> GetAdmins();
     Task<User>GetUser (Guid UserId);
-    Task<bool> EditUser(User user);
+    Task<bool> EditUser(EditUserViewModel user);
     Task<List<Role>>GetRoles();
     Task<bool> DeleteUser(Guid UserId);
 

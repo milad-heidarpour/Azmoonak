@@ -1,4 +1,4 @@
-﻿@model Azmoonak.Database.Models.User
+﻿@model Azmoonak.Core.ViewModels.EditUserViewModel
 
 @{
     ViewData["Title"] = "EditUser";
@@ -45,6 +45,8 @@
                     <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
                 </label>
             </div>
+
+
             <div class="form-group mt-3">
                 <input type="submit" value="Save" class="btn btn-success" />
             </div>

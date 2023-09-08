@@ -88,7 +88,7 @@ public class AccountService : IAccount
         }
     }
 
-    public async Task<bool> EditUser(User user)
+    public async Task<bool> EditUser(EditUserViewModel user)
     {
         try
         {
@@ -103,6 +103,12 @@ public class AccountService : IAccount
                 Console.ForegroundColor = ConsoleColor.Yellow);
             return await Task.FromResult(false);
         }
+    }
+
+    public async Task<List<User>> GetAdmins()
+    {
+        var admins = _context.Users.Include(u => u.Role).Where(u => u.Role.RoleName == "admin").ToList();
+        return await Task.FromResult(admins);
     }
 
     public async Task<List<Role>> GetRoles()

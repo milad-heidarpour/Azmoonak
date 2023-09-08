@@ -1,5 +1,6 @@
 ﻿using Azmoonak.Classes;
 using Azmoonak.Core.Interface;
+using Azmoonak.Core.ViewModels;
 using Azmoonak.Database.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +27,10 @@ public class PanelController : Controller
     public async Task<IActionResult> Index()
     {
         //اینجا باید لیست ادمین هارو بگیرم و اگر شد کسی که ادمین اصلی هست بتونه بقیه  رو تغییر بده
-        return View();
+
+        var admins=await _account.GetAdmins();
+        ViewBag.AdminCount = admins.Count;
+        return View(admins);
     }
 
 
@@ -44,8 +48,18 @@ public class PanelController : Controller
 
         if (user != null)
         {
+            EditUserViewModel viewModel = new EditUserViewModel()
+            {
+                Id = user.Id,
+                RoleId = user.RoleId,
+                FName = user.FName,
+                LName = user.LName,
+                Mobile = user.Mobile,
+                Password = user.Password,
+                IsActive = user.IsActive,
+            };
             ViewBag.RoleId = new SelectList(await _account.GetRoles(), "Id", "RoleName");
-            return View(user);
+            return View(viewModel);
         }
         return RedirectToAction(nameof(Index));
     }
@@ -53,13 +67,14 @@ public class PanelController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> EditUser(User user)
+    public async Task<IActionResult> EditUser(EditUserViewModel user)
     {
         if (ModelState.IsValid)
         {
             var result = await _account.EditUser(user);
             return RedirectToAction(nameof(Details), new { id = user.Id, editUser = result });
         }
+        ViewBag.RoleId = new SelectList(await _account.GetRoles(), "Id", "RoleName");
         return View(user);
     }
 

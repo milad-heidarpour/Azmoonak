@@ -1,91 +1,104 @@
 ﻿@model Azmoonak.Core.ViewModels.GroupQuestionViewModel
 
-<nav>
-    <div class="container-fluid contain my-0 my-md-3">
-        <div class="row">
-            <div class="col-4 col-md-3 Logo">
-                <a class="d-none d-md-inline-block"><img src="~/Image/Site/onlinexam-Logo.jpg" width="100" height="100" alt="onlinexam-Logo"></a>
-                <i id="menubar" class="fa fa-bars d-md-none"></i>
-            </div>
-            <div class="d-none col-md-6 d-md-flex align-items-center">
-                <ul class="d-flex menu-ul mx-auto">
-                    @{
-                        if (User.Identity.IsAuthenticated)
-                        {
-                            <a asp-area="" asp-controller="exam" asp-action="showexamgroups" class="list-menu text-decoration-none">
-                                آزمون آنلاین
-                            </a>
-                        }
-                        else
-                        {
-                            <a asp-area="" asp-controller="account" asp-action="login" class="list-menu text-decoration-none">
-                                آزمون آنلاین
-                            </a>
-                        }
-                    }
-                    
+<div class="newheader">
+    <div class="container-fluid bg-site-mode-color h-100 rounded-4 header-div">
+        <div class="row h-100">
+            <div class="col-5  p-0   d-flex align-items-center justify-content-center h-100 rounded-end-4">
+                <div class="humburger-menu ms-5 d-md-none">
+                    <img id="showslider" src="~/Image/Site/humborger.png" alt="">
+                </div>
+                <ul class="d-flex mt-3 align-items-center ulList d-md-flex gap-lg-4  gap-md-3 d-none  list-unstyled mx-1 me-5 w-100 ">
+                    <li class="h-100 d-flex align-items-center pointer"><a asp-area="" asp-controller="home" asp-action="index" class="text-decoration-none text-white">خانه</a></li>
+                    <li class="h-100 d-flex align-items-center pointer position-relative">
 
-                    <li id="proposal-menu" class="list-menu">
-                        پیشنهادی
-                        <div id="proposal-listmenu" class="proposal-testList d-flex rounded-1">
-                            <ul>
-                                <li>آزمون word</li>
-                                <li>آزمون exel</li>
-                                <li>آزمون powerpoint</li>
-                                <li>آرمون c#</li>
-                            </ul>
-
-                        </div>
+                        @{
+                            if (User.Identity.IsAuthenticated)
+                            {
+                                <a asp-area="" asp-controller="exam" asp-action="showexamgroups" class="text-decoration-none text-white">لیست آزمون ها</a>
+                            }
+                            else
+                            {
+                                <a asp-area="" asp-controller="account" asp-action="login" class="text-decoration-none text-white">لیست آزمون ها</a>
+                            }
+                        }
                     </li>
-                    <li id="example-question-menu" class="list-menu">
-                        نمونه سوالات
-                        <div id="test-listmenu" class="example-question-testList d-flex rounded-1">
-                            <ul>
-                                <partial name="groupspartial" model="@Model.Groups" />
+                    <li class="h-100 d-flex align-items-center pointer sample-parent position-relative">
+                        <a class="text-decoration-none text-white" href="#">نمونه سوالات</a>
+                        <div class="sample-question rounded-2">
+
+                            <ul class="list-unstyled w-100 p-2">
+                                <li class="w-100 py-2 d-flex justify-content-center mt-1  align-items-center"><partial name="groupspartial" model="@Model.Groups" /></li>
                             </ul>
                         </div>
                     </li>
-                    <a href="#" class="text-decoration-none text-black">
-                    <li class="list-menu guide">راهنما<span class="fa fa-exclamation-circle"></span></li></a>
+                    <li class="h-100 d-flex align-items-center pointer"><a class="text-decoration-none text-white" href="#">درباره ما</a></li>
                 </ul>
             </div>
-            <div class="col-8 col-md-3 d-flex align-items-center justify-content-center">
-                <div class="row align-items-center">
-                    <div id="searh-box" class="col search-box">
-                        <input id="search-inpt" class="search-inpt" type="search" placeholder="جستجو...">
-                        <i class="fa fa-search"></i>
+
+
+
+
+
+
+            <div class="col-2  h-100 position-relative d-flex justify-content-center">
+                <div class="logo">
+                    <div class="logo-box">
+                        <img class="logo-img" src="~/Image/Site/Slider/Logo.png" alt="">
                     </div>
                 </div>
             </div>
+
+
+
+
+
+            <div class="col-5 d-flex justify-content-around align-items-center h-100 rounded-start-4">
+                <div id="search" class="saerch form-control d-none d-md-block w-75">
+                    <label class="d-flex align-items-center justify-content-around position-relative" for="inpt">
+                        <input id="inpt" class="search-inpt form-control" type="search" placeholder="جستجو...">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </label>
+                </div>
+
+                @{
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-area="" asp-controller="profile" asp-action="Index" style="cursor: pointer; color:white;" title="ورود به پنل کاربری" class="fa fa-user fa-lg"></a>
+                    }
+                    else
+                    {
+                        <a asp-area="" asp-controller="account" asp-action="login" style="cursor: pointer; color:white;" title="ورود به پنل کاربری" class="fa fa-user fa-lg"></a>
+                    }
+                }
+            </div>
         </div>
+
+
+
+
+    </div>
+    <div id="background-slider" class="background-slider d-none position-absolute top-0">
     </div>
 
-    <div id="offCanavas" class="offCanavas">
-        <div id="menusliding" class="menu-sliding">
-            <span id="close" class="close fa fa-times"></span>
-            <div class="img d-flex justify-content-end">
-                <img src="~/Image/Site/onlinexam-Logo.jpg" alt="Logo">
-            </div>
-            <div class="dropdown-lists my-4">
-                <ul>
-                    <li id="onlineTest-sliding" class="sliding-group-li">آزمون آنلاین<i id="onlineTest-icon" class="fa angles fa-angle-double-left"></i></li>
-                    <div id="sliding-box" class="dropdown-onlineexam-box me-4 showlists">
-                        <ul>
-                            <a href="#">
-                            <li>word</li></a>
-                            <a href="#">
-                            <li>exel</li></a>
-                            <a href="#">
-                            <li>c #</li></a>
-                            <a href="#">
-                            <li>powerpoint</li></a>
-                        </ul>
-                    </div>
-                    <li class="sliding-group-li">پیشنهادی<i class="fa angles fa-angle-double-left"></i></li>
-                    <li class="sliding-group-li">نمونه سوالات<i class="fa angles fa-angle-double-left"></i></li>
-                    <li class="sliding-group-li">راهنما<i class="fa fa-exclamation-circle"></i></li>
-                </ul>
+    <div class="menu-slider  bg-black position-absolute top-0">
+        <div class="logo-responsive position-relative w-100 h-25">
+            <span id="closed" class="bg-danger btn btn-close mt-2 me-2"></span>
+            <img class="shadow" src="/img/logo.png" alt="">
+        </div>
+        <div class="lists-menu h-50 w-100">
+            <ul class="list-unstyled">
+                <li class="p-2 mt-1 pointer"><a class="text-decoration-none text-black" href="#">لیست آزمون ها</a></li>
+                <li class="p-2 mt-1 pointer"><a class="text-decoration-none text-black" href="#">نمونه سوالات</a></li>
+                <li class="p-2 mt-1 pointer"><a class="text-decoration-none text-black" href="#">راهنما</a></li>
+            </ul>
+        </div>
+        <div class="w-100 h-25 d-flex align-items-end">
+            <div class="login-respomnsive pointer w-100 mb-3 d-flex justify-content-between align-items-center bg-info p-2">
+                <span class="mt-2"><i class="fa fa-arrow-right"></i><h5 class="d-inline-block me-2">پروفایل</h5></span>
+                <i class="fa fa-user-circle fa-lg"></i>
             </div>
         </div>
     </div>
-</nav>
+</div>

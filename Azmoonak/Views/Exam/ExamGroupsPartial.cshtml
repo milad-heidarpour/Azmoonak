@@ -2,7 +2,19 @@
 
 @foreach (var item in Model)
 {
-    <li><a asp-area="" asp-controller="exam" asp-action="details" asp-route-id="@item.Id" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Details('@(item.Id)')"> @item.GroupName</a></li>
+            <div class="child-list">
+
+                <h2>hover it is elemnt</h2>
+
+                <div class="hoverd">
+
+                    <li><a asp-area="" asp-controller="exam" asp-action="details" asp-route-id="@item.Id" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Details('@(item.Id)')"> @item.GroupName</a></li>
+
+                </div>
+
+            </div>
+
+   
 }
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

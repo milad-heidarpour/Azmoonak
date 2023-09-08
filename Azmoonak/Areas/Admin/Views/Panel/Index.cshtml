@@ -1,7 +1,65 @@
-﻿@model Azmoonak.Database.Models.Group
+﻿@model IEnumerable<Azmoonak.Database.Models.User>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_PanelLayout.cshtml";
 }
 
+
+<table class="table table-striped table-dark mt-4 ">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mobile)
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th> *@
+            @* <th>
+            @Html.DisplayNameFor(model => model.Code)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+           @*  <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th> *@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mobile)
+                </td>
+               @*  <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td> *@
+                @*             <td>
+            @Html.DisplayFor(modelItem => item.Code)
+            </td> *@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role.RoleTitle)
+                </td>
+                @* <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td> *@
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />               
