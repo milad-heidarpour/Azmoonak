@@ -27,6 +27,9 @@ public class PanelController : Controller
     public async Task<IActionResult> Index()
     {
         //اینجا باید لیست ادمین هارو بگیرم و اگر شد کسی که ادمین اصلی هست بتونه بقیه  رو تغییر بده
+        //تعداد کاربران
+        //تعداد کارنامه های امتحان
+        //
 
         var admins=await _account.GetAdmins();
         ViewBag.AdminCount = admins.Count;

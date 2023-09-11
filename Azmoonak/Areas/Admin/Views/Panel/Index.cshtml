@@ -6,16 +6,19 @@
 }
 
 
-<table class="table table-striped table-dark mt-4 ">
-    <thead>
+<table class="table table-bordered table-striped table-dark mt-3">
+    <thead class="text-center">
         <tr>
             <th>
+                <span class="fa fa-lg fa-id-card-o"></span>
                 @Html.DisplayNameFor(model => model.FName)
             </th>
             <th>
+                <span class="fa fa-lg fa-id-card-o"></span>
                 @Html.DisplayNameFor(model => model.LName)
             </th>
             <th>
+                <span class="fa fa-lg Example of phone fa-phone"></span>
                 @Html.DisplayNameFor(model => model.Mobile)
             </th>
             @* <th>
@@ -25,14 +28,15 @@
             @Html.DisplayNameFor(model => model.Code)
             </th> *@
             <th>
-                @Html.DisplayNameFor(model => model.Role)
+                <span class="fa fa-lg fa-user-o"></span>
+                @Html.DisplayNameFor(model => model.Role.RoleName)
             </th>
            @*  <th>
                 @Html.DisplayNameFor(model => model.IsActive)
             </th> *@
         </tr>
     </thead>
-    <tbody>
+    <tbody class="text-center">
         @foreach (var item in Model)
         {
             <tr>
