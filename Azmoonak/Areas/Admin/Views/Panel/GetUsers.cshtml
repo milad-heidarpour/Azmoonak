@@ -10,64 +10,70 @@
 
 
 <table class="table table-bordered table-striped table-dark mt-4 ">
-    <thead>
+    <thead class ="text-center">
         <tr>
-            <th class="text-center">
+            <th >
                 <span class="fa fa-lg fa-id-card-o"></span>
                 @Html.DisplayNameFor(model => model.FName)
             </th>
-            <th class="text-center">
+            <th>
                 <span class="fa fa-lg fa-id-card-o"></span>
                 @Html.DisplayNameFor(model => model.LName)
             </th>
-            <th class="text-center">
+            <th>
                 <span class="fa fa-lg Example of phone fa-phone"></span>
                 @Html.DisplayNameFor(model => model.Mobile)
             </th>
-            @*  <th class="text-center">
+            @*  <th>
                 @Html.DisplayNameFor(model => model.Password)
             </th> *@
-            @* <th class="text-center">
+            @* <th>
             @Html.DisplayNameFor(model => model.Code)
             </th> *@
-            <th class="text-center">
+            <th >
                 <span class="fa fa-lg fa-user-o"></span>
                 @Html.DisplayNameFor(model => model.Role.RoleName)
             </th>
-            <th class="text-center">
+            <th >
                 <span class="fa fa-lg fa-male"></span>
                 @Html.DisplayNameFor(model => model.IsActive)
             </th>
-            <th></th>
+            <th>
+                <h6>
+                    <span class="fa fa-lg Example of cogs fa-cogs"></span> تنظیمات
+                </h6>
+                
+            </th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="text-center">
         @foreach (var item in Model)
         {
             <tr>
-                <td class="text-center">
+                <td >
                     @Html.DisplayFor(modelItem => item.FName)
                 </td>
-                <td class="text-center">
+                <td >
                     @Html.DisplayFor(modelItem => item.LName)
                 </td>
-                <td class="text-center">
+                <td >
                     @Html.DisplayFor(modelItem => item.Mobile)
                 </td>
-                @* <td class="text-center">
+                @* <td >
                     @Html.DisplayFor(modelItem => item.Password)
                 </td> *@
-                @* <td class="text-center">
+                @* <td >
             @Html.DisplayFor(modelItem => item.Code)
             </td> *@
-                <td class="text-center">
+                <td>
                     @Html.DisplayFor(modelItem => item.Role.RoleName)
                 </td>
-                <td class="text-center">
+                <td >
                     @Html.DisplayFor(modelItem => item.IsActive)
                 </td>
-                <td class="text-center">
-                    <a asp-area="admin" asp-controller="panel" asp-action="EditUser" asp-route-id="@item.Id" class="btn btn-warning">Edit<span class="fa fa-edit"></span></a>
+                <td >
+                    <a asp-area="admin" asp-controller="panel" asp-action="EditUser" asp-route-id="@item.Id" class="btn btn-warning"><span class="fa fa-lg fa-edit"></span> ویرایش</a>
+                    <a asp-area="admin" asp-controller="panel" asp-action="GetUserCertificate" asp-route-id="@item.Id" class="btn btn-info"><span class="fa fa-lg fa-file-text-o"></span> کارنامه ها</a>
                     @* <a asp-action="Details" asp-route-id="@item.Id" class=" btn btn-info"><span class="fa fa-info"></span></a> *@
                     <a data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete('@(item.Id)')" class="btn btn-danger"><span class="fa fa-trash-o"></span></a>
                 </td>

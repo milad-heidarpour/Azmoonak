@@ -26,22 +26,32 @@ public class PanelController : Controller
     }
     public async Task<IActionResult> Index()
     {
-        //اینجا باید لیست ادمین هارو بگیرم و اگر شد کسی که ادمین اصلی هست بتونه بقیه  رو تغییر بده
-        //تعداد کاربران
-        //تعداد کارنامه های امتحان
-        //
+        var admin = await _account.GetAdmin(AdminMobile: User.Identity.Name);
 
-        var admins=await _account.GetAdmins();
+        //باید پروفایل خود ادمین را نمایش دهم که بتونه خودش را تغییر دهد
+        //باید عکس را هم بعدا اضافه کنم
+        return View(admin);
+    }
+
+    public async Task<IActionResult> SiteDetail()
+    {
+        var admins = await _account.GetAdmins();
         ViewBag.AdminCount = admins.Count;
         return View(admins);
     }
-
 
     public async Task<IActionResult> GetUsers()
     {
         var users = await _account.GetUsers();
         ViewBag.UserCount=users.Count;
         return View(users);
+    }
+
+    public async Task<IActionResult> GetUserCertificate(Guid id)//id=>userid
+    {
+        var user = await _account.GetUser(id);
+        var certificate = await _account.GetUserCertificate(user.Id);
+        return View(certificate);
     }
 
 

@@ -38,6 +38,7 @@ namespace Azmoonak.Database.Models
 
 
         [Required]
+        [Display(Name = "رمز عبور")]
         public string Password { get; set; }
 
 

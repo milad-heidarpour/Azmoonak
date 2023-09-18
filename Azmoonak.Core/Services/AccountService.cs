@@ -119,8 +119,32 @@ public class AccountService : IAccount
 
     public async Task<User> GetUser(Guid UserId)
     {
-        var user = await _context.Users.Include(u => u.Role).FirstOrDefaultAsync(u => u.Id == UserId);
+        var user = await _context.Users.Include(u=>u.Certificates).Include(u => u.Role).FirstOrDefaultAsync(u => u.Id == UserId);
         return await Task.FromResult(user);
+    }
+    public async Task<List<Certificate>> GetUserCertificate(Guid UserId)
+    {
+        var certificates = await _context.Certificates.Include(c=>c.User).Include(c=>c.Group).Where(c => c.UserId == UserId).ToListAsync();
+        return await Task.FromResult(certificates);
+    }
+
+    public async Task<User> GetAdmin(string AdminMobile)
+    {
+        var admin = await _context.Users.Where(u => u.Mobile == AdminMobile).Select(s => new User()
+        {
+            Id = s.Id,
+            FName = s.FName,
+            LName = s.LName,
+            Mobile = s.Mobile,
+            Password=s.Password,
+            IsActive = s.IsActive,
+            Role = new Role()
+            {
+                Id = s.Role.Id,
+                RoleName = s.Role.RoleName
+            }
+        }).FirstOrDefaultAsync();
+        return admin;
     }
 
     public async Task<List<User>> GetUsers()//just for users

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Azmoonak.Database.Models.Certificate>
+
+@{
+    ViewData["Title"] = "GetUserCertificate";
+    Layout = "~/Areas/Admin/Views/Shared/_PanelLayout.cshtml";
+}
+
+
+
+<table class="table table-bordered table-striped table-dark">
+    <thead class="text-center">
+        <tr>
+            <th>
+                <span class="fa fa-lg fa-id-card-o"></span>
+                @Html.DisplayNameFor(model => model.User.FName)
+            </th>
+            <th>
+                <span class="fa fa-lg fa-id-card-o"></span>
+                @Html.DisplayNameFor(model => model.User.LName)
+            </th>
+            <th>
+                <span class="fa fa-lg fa-graduation-cap"></span>
+                @Html.DisplayNameFor(model => model.Group.GroupName)
+            </th>
+            <th>
+                <span class="fa fa-lg fa-braille"></span>
+                @Html.DisplayNameFor(model => model.FinalScore)
+            </th>
+            <th>
+                <span class="fa fa-lg fa-check-circle-o" style="color:lightgreen;"></span>
+                @Html.DisplayNameFor(model => model.CorrectAnswer)
+            </th>
+            <th>
+                <span class="fa fa-lg fa-times-circle-o" style="color:red;"></span>
+                @Html.DisplayNameFor(model => model.FalseAnswer)
+            </th>
+            <th>
+                <span class="fa fa-lg fa-circle-o"></span>
+                @Html.DisplayNameFor(model => model.NoAnswer)
+            </th>
+            <th>
+                <span class="fa fa-lg fa-calendar"></span>
+                @Html.DisplayNameFor(model => model.OpenDateTime)
+            </th>
+        </tr>
+    </thead>
+    <tbody class="text-center">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.FName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.LName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Group.GroupName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FinalScore)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CorrectAnswer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FalseAnswer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoAnswer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OpenDateTime)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
