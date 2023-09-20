@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Principal;
 
 namespace Azmoonak.Core.Services;
 
@@ -92,7 +93,17 @@ public class AccountService : IAccount
     {
         try
         {
-            _context.Update(user);
+            User edituser = new User()
+            {
+                Id = user.Id,
+                RoleId = user.RoleId,
+                FName = user.FName,
+                LName = user.LName,
+                Password = user.Password,
+                Mobile = user.Mobile,
+                IsActive = user.IsActive,
+            };
+            _context.Users.Update(edituser);
             await _context.SaveChangesAsync();
             return await Task.FromResult(true);
         }

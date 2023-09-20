@@ -18,7 +18,7 @@ public class PanelController : Controller
     IQuestion _question;
     IAccount _account;
 
-    public PanelController(IGroup group,IQuestion question,IAccount account)
+    public PanelController(IGroup group, IQuestion question, IAccount account)
     {
         _group = group;
         _question = question;
@@ -43,7 +43,7 @@ public class PanelController : Controller
     public async Task<IActionResult> GetUsers()
     {
         var users = await _account.GetUsers();
-        ViewBag.UserCount=users.Count;
+        ViewBag.UserCount = users.Count;
         return View(users);
     }
 
@@ -55,7 +55,7 @@ public class PanelController : Controller
     }
 
 
-    public async Task<IActionResult>EditUser(Guid id)
+    public async Task<IActionResult> EditUser(Guid id)
     {
         var user = await _account.GetUser(id);
 
@@ -90,9 +90,6 @@ public class PanelController : Controller
         ViewBag.RoleId = new SelectList(await _account.GetRoles(), "Id", "RoleName");
         return View(user);
     }
-
-
-
     public async Task<IActionResult> Details(Guid id, bool editUser = false)
     {
         var user = await _account.GetUser(id);
