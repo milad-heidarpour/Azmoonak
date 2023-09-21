@@ -1,11 +1,13 @@
 ﻿@model IEnumerable<Azmoonak.Database.Models.Question>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Questions | سوالات";
     Layout = "~/Areas/Admin/Views/Shared/_PanelLayout.cshtml";
 }
 
 <h1 class="text-center">Question | سوالات</h1>
+<h5 class="text-center mt-3">Questions Count : @ViewBag.QuestionsCount | تعداد سوالات : @ViewBag.QuestionsCount</h5>
+<hr />
 
 <p>
     <a asp-action="Create" class="btn btn-success me-4"><span class="fa fa-plus-circle fa-lg "></span> ایجاد سوال جدید</a>
@@ -13,73 +15,85 @@
 <div class="col-12">
     <table class="table table-bordered table-striped table-dark rounded-5">
         <thead class="text-center">
-        <tr>
-            <th>
-                @* @Html.DisplayNameFor(model => model.QText) *@
-                <h6><span class="fa fa-book"></span> متن سوال</h6>
-            </th>
-            <th>
-                @* @Html.DisplayNameFor(model => model.AnOne) *@
+            <tr>
+                <th>
+                    <span class="fa fa-lg fa-sort-numeric-asc"></span>
+                </th>
+                <th>
+                    @* @Html.DisplayNameFor(model => model.QText) *@
+                    <h6><span class="fa fa-book"></span> متن سوال</h6>
+                </th>
+                <th>
+                    @* @Html.DisplayNameFor(model => model.AnOne) *@
                     <h6>(الف)</h6>
-            </th>
-            <th>
-                @* @Html.DisplayNameFor(model => model.AnTwo) *@
+                </th>
+                <th>
+                    @* @Html.DisplayNameFor(model => model.AnTwo) *@
                     <h6>(ب)</h6>
-            </th>
-            <th>
-                @* @Html.DisplayNameFor(model => model.AnThree) *@
+                </th>
+                <th>
+                    @* @Html.DisplayNameFor(model => model.AnThree) *@
                     <h6>(ج)</h6>
-            </th>
-            <th>
-                @* @Html.DisplayNameFor(model => model.AnFour) *@
+                </th>
+                <th>
+                    @* @Html.DisplayNameFor(model => model.AnFour) *@
                     <h6>(د)</h6>
-            </th>
-            <th>
-                @* @Html.DisplayNameFor(model => model.CorrectAn) *@
-                    <h6><span class="fa fa-lg fa-check-circle-o" style="color:lightgreen;"></span> (جواب درست)</h6>
-            </th>
-            @*<th>
+                </th>
+                <th>
+                    @* @Html.DisplayNameFor(model => model.CorrectAn) *@
+                    <h6><span class="fa fa-lg fa-check-circle-o" style="color:lightgreen;"></span> (درست)</h6>
+                </th>
+                @*<th>
                 @Html.DisplayNameFor(model => model.Group)
-            </th>*@
-            <th></th>
-        </tr>
-    </thead>
-        <tbody class="text-center">
-@foreach (var item in Model) {
-        <tr>
-            <td style="direction:rtl">
-                @Html.DisplayFor(modelItem => item.QText)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AnOne)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AnTwo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AnThree)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AnFour)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CorrectAn)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Group.GroupName)
-            </td>*@
-            <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><span class="fa fa-edit"></span></a>
-                    @* <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info"><span class="fa fa-info"></span> Details</a> | *@
-                    <a data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete('@(item.Id)')" class="btn btn-danger"><span class="fa fa-trash-o"></span></a>
-                    
-            </td>
-        </tr>
-}
+                </th>*@
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="text-center" style="direction:rtl">
+            @{
+                var number = 0;
+            }
+            @foreach (var item in Model)
+            {
+                number++;
 
-            
-    </tbody>
-</table>
+                <tr>
+                    <td>
+                        @number
+                    </td>
+                    <td >
+                        @Html.DisplayFor(modelItem => item.QText)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AnOne)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AnTwo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AnThree)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AnFour)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CorrectAn)
+                    </td>
+                    @*<td>
+                @Html.DisplayFor(modelItem => item.Group.GroupName)
+                </td>*@
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><span class="fa fa-edit"></span></a>
+                        @* <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info"><span class="fa fa-info"></span> Details</a> | *@
+                        <a data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Delete('@(item.Id)')" class="btn btn-danger"><span class="fa fa-trash-o"></span></a>
+
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -112,7 +126,7 @@
         $.ajax({
             url: '/admin/questions/delete',
             type: 'get',
-            data: {/*controller parameter*/  id:questionid /*send parameter*/ },
+            data: {/*controller parameter*/  id: questionid /*send parameter*/ },
             success: (result) => {
                 document.getElementById('modalBody').innerHTML = result;
             }

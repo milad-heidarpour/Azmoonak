@@ -1,18 +1,25 @@
 ﻿@model IEnumerable<Azmoonak.Database.Models.Certificate>
 
 @{
-    ViewData["Title"] = "GetCertificate";
+    ViewData["Title"] = "Get Certificate | کارنامه ها";
     Layout = "~/Views/Shared/_ProfileLayout.cshtml";
 }
 
 @{
     if (Model.Count()>0)
     {
-        <h1>لیست امتحانات</h1>
+        <h1 class="text-center">لیست امتحانات</h1>
+        <a asp-area="" asp-controller="exam" asp-action="showexamgroups" class="btn btn-success">برای شروع امتحان جدید کلیک کنید</a>
+        <hr />
+
+        
 
         <table class="table table-bordered table-striped table-dark">
             <thead class="text-center">
                 <tr>
+                    <th>
+                        <span class="fa fa-lg fa-sort-numeric-asc"></span>
+                    </th>
                     <th>
                         <span class="fa fa-lg fa-id-card-o"></span>
                         @Html.DisplayNameFor(model => model.User.FName)
@@ -48,9 +55,17 @@
                 </tr>
             </thead>
             <tbody class="text-center">
+                @{
+                    var number = 0;
+                }
                 @foreach (var item in Model)
                 {
+                    number++;
+
                     <tr>
+                        <td>
+                            @number
+                        </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.User.FName)
                         </td>
@@ -80,12 +95,14 @@
             </tbody>
         </table>
 
-        <h6>لینک بدم بگم برای شروع امتحان جدید کلیک کنید</h6>
+        
     }
     else
     {
-        <h1> no more certificate</h1>
-        ///لینک بدم به صفحه لیست سوالات که امتحانات شروع کند
+        <h1 class="text-center">لیست امتحانات</h1>
+        <hr />
+        <h1 class="text-center">شما تا کنون در هیچ امتحانی شرکت نکرده اید</h1>
+        <a asp-area="" asp-controller="exam" asp-action="showexamgroups" class="btn btn-success">برای شروع امتحان جدید کلیک کنید</a>
     }
 }
 

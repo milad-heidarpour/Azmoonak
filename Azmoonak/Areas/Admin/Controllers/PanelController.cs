@@ -36,7 +36,7 @@ public class PanelController : Controller
     public async Task<IActionResult> SiteDetail()
     {
         var admins = await _account.GetAdmins();
-        ViewBag.AdminCount = admins.Count;
+        ViewBag.AdminsCount = admins.Count;
         return View(admins);
     }
 

@@ -16,6 +16,7 @@ public class GroupsController : Controller
     public async Task<IActionResult> Index()
     {
         var groups = await _group.GetGroups();
+        ViewBag.GroupsCount=groups.Count;
         return View(groups);
     }
     public async Task<IActionResult>Details(int id, bool editGroup = false)

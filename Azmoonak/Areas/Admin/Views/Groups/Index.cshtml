@@ -6,6 +6,9 @@
 }
 
 <h1 class="text-center">Groups | دسته بندی ها</h1>
+<h5 class="text-center mt-3">Groups Count : @ViewBag.GroupsCount | تعداد گروه ها : @ViewBag.GroupsCount</h5>
+<hr />
+
 
 <p>
     <a asp-action="Create" class="btn btn-success ms-1"><span class="fa fa-plus-circle fa-lg"></span> ایجاد گروه جدید</a>
@@ -14,6 +17,9 @@
     <table class="table table-bordered table-striped table-dark">
         <thead class="text-center">
             <tr>
+                <th>
+                    <span class="fa fa-lg fa-sort-numeric-asc"></span>
+                </th>
                 <th>
                     <span class="fa fa-lg fa-bars"></span>
                     @Html.DisplayNameFor(model => model.GroupName)
@@ -33,9 +39,17 @@
             </tr>
         </thead>
         <tbody class="text-center">
+            @{
+                var number = 0;
+            }
             @foreach (var item in Model)
             {
+                number++;
+
                 <tr>
+                    <td>
+                        @number
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.GroupName)
                     </td>

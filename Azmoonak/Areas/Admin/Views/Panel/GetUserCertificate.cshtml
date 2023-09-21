@@ -1,15 +1,20 @@
 ﻿@model IEnumerable<Azmoonak.Database.Models.Certificate>
 
 @{
-    ViewData["Title"] = "GetUserCertificate";
+    ViewData["Title"] = "Get User Certificates | کارنامه های کاربر";
     Layout = "~/Areas/Admin/Views/Shared/_PanelLayout.cshtml";
 }
 
-
+<h1 class="text-center">User Certificates | کارنامه های کاربر</h1>
+<hr />
 
 <table class="table table-bordered table-striped table-dark">
     <thead class="text-center">
         <tr>
+            <th>
+                <span class="fa fa-lg fa-sort-numeric-desc"></span>
+
+            </th>
             <th>
                 <span class="fa fa-lg fa-id-card-o"></span>
                 @Html.DisplayNameFor(model => model.User.FName)
@@ -45,9 +50,16 @@
         </tr>
     </thead>
     <tbody class="text-center">
+        @{
+            var number = 0;
+        }
         @foreach (var item in Model)
         {
+            number++;
             <tr>
+                <td>
+                    @number
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.User.FName)
                 </td>

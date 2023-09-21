@@ -1,13 +1,21 @@
 ﻿@model IEnumerable<Azmoonak.Database.Models.User>
 
 @{
-    ViewData["Title"] = "GetAdmins";
+    ViewData["Title"] = "Site Details | جزئیات سایت";
     Layout = "~/Areas/Admin/Views/Shared/_PanelLayout.cshtml";
 }
 
+<h1 class="text-center">Site Details | جزئیات سایت</h1>
+<hr />
+
+<h5 class="text-center mt-3">Admins Count : @ViewBag.AdminsCount | تعداد مدیر ها : @ViewBag.AdminsCount</h5>
 <table class="table table-bordered table-striped table-dark mt-3">
     <thead class="text-center">
         <tr>
+            <th>
+                <span class="fa fa-lg fa-sort-numeric-asc"></span>
+                
+            </th>
             <th>
                 <span class="fa fa-lg fa-id-card-o"></span>
                 @Html.DisplayNameFor(model => model.FName)
@@ -36,9 +44,17 @@
         </tr>
     </thead>
     <tbody class="text-center">
+        @{
+            var number = 0;
+        }
         @foreach (var item in Model)
         {
+            number++;
+
             <tr>
+                <td>
+                    @number
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.FName)
                 </td>

@@ -22,7 +22,7 @@ public class ProfileController : Controller
         {
             return Redirect("~/admin/panel");
         }
-        return View();
+        return View(user);
     }
 
     public async Task<IActionResult> GetCertificate() //id=userid

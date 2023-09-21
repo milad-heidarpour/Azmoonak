@@ -19,6 +19,7 @@ public class QuestionsController : Controller
     public async Task< IActionResult> Index()
     {
         var question =await _question.GetQuestions();
+        ViewBag.QuestionsCount = question.Count;
         return View(question);
     }
     public async Task<IActionResult> Create()
