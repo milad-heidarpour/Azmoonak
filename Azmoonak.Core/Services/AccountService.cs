@@ -36,20 +36,25 @@ public class AccountService : IAccount
             }
 
 
-            //add user
-            User newUser = new User()
+            if (register.Password==register.RePassword)
             {
-                Id = Guid.NewGuid(),
-                RoleId = _context.Roles.SingleOrDefault(r => r.RoleName == "user").Id,
-                FName = register.FName,
-                LName = register.LName,
-                Mobile = register.Mobile,
-                Password = await new Security().HashPassword(await new Security().HashPassword(register.Password)),
-                IsActive = true
-            };
-            await _context.Users.AddAsync(newUser);
-            await _context.SaveChangesAsync();
-            return true;
+                //add user
+                User newUser = new User()
+                {
+                    Id = Guid.NewGuid(),
+                    RoleId = _context.Roles.SingleOrDefault(r => r.RoleName == "user").Id,
+                    FName = register.FName,
+                    LName = register.LName,
+                    Mobile = register.Mobile,
+                    Password = await new Security().HashPassword(await new Security().HashPassword(register.Password)),
+                    IsActive = true
+                };
+                await _context.Users.AddAsync(newUser);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            return false;
+
         }
         catch (Exception error)
         {

@@ -5,10 +5,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_PanelLayout.cshtml";
 }
 
-<h1 class="text-center">سوالات</h1>
+<h1 class="text-center">Question | سوالات</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-success me-4"><span class="fa fa-plus-circle fa-lg "></span> Create New</a>
+    <a asp-action="Create" class="btn btn-success me-4"><span class="fa fa-plus-circle fa-lg "></span> ایجاد سوال جدید</a>
 </p>
 <div class="col-12">
     <table class="table table-bordered table-striped table-dark rounded-5">
@@ -83,10 +83,10 @@
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div style="background-color:#151515;" class="modal-content">
             <div class="modal-header">
                 @*<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>*@
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button style="background-color:red;" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div id="modalBody" class="modal-body">
                 ...

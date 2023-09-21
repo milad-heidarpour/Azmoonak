@@ -5,11 +5,11 @@
     Layout = "~/Areas/Admin/Views/Shared/_PanelLayout.cshtml";
 }
 
-<h1 class="text-center">Create</h1>
+<h1 class="text-center">Create | افرودن سوال جدید</h1>
 
 
 
-<h4>Question</h4>
+
 <hr />
 <div class="row">
 
@@ -43,15 +43,16 @@
             </div>
             <div class="form-group">
                 <label asp-for="CorrectAn" class="control-label pt-3"></label>
+                <span class="fa fa-lg fa-check-circle-o" style="color:green;"></span>
                 <input asp-for="CorrectAn" class="form-control border-black bg-success border-4" />
                 <span asp-validation-for="CorrectAn" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="GroupId" class="control-label pt-3 "></label>
-                <select asp-for="GroupId" class="form-control border-black bg-warning border-4" asp-items="ViewBag.GroupId"><option selected disabled>---Select Group---</option></select>
+                <select asp-for="GroupId" class="form-control border-black bg-warning border-4" asp-items="ViewBag.GroupId"><option selected disabled>---انتخاب گروه---</option></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-success mt-3" />
+                <input type="submit" value="ثبت" class="btn btn-success mt-3" />
             </div>
         </form>
     </div>
@@ -59,5 +60,5 @@
 
 
 <div dir="ltr">
-    <a asp-action="Index" class=" btn btn-danger">Back to List</a>
+    <a asp-action="Index" class=" btn btn-danger ">بازگشت <span class="fa fa-angle-double-right fa-lg"></span></a>
 </div>

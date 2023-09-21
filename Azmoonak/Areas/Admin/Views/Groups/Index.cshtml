@@ -8,7 +8,7 @@
 <h1 class="text-center">Groups | دسته بندی ها</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-success ms-1"><span class="fa fa-plus-circle fa-lg"></span> Create New</a>
+    <a asp-action="Create" class="btn btn-success ms-1"><span class="fa fa-plus-circle fa-lg"></span> ایجاد گروه جدید</a>
 </p>
 <div>
     <table class="table table-bordered table-striped table-dark">
@@ -46,10 +46,10 @@
                         @Html.DisplayFor(modelItem => item.NotShow)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><span class="fa fa-edit"></span> Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info"><span class="fa fa-info"></span> Details & Questions </a> |
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><span class="fa fa-edit fa-lg"></span> ویرایش</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info"><span class="fa fa-info fa-lg"></span> جزئیات</a> |
                         <div id='@("delete-group-"+item.Id)' class="d-inline-block">
-                            <a onclick="DeleteForm(@item.Id)" class="btn btn-danger"><span class="fa fa-trash"></span> Delete</a>
+                            <a onclick="DeleteForm(@item.Id)" class="btn btn-danger"><span class="fa fa-trash fa-lg"></span> حذف</a>
                         </div>
                     </td>
                 </tr>
