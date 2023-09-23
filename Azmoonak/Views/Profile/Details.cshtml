@@ -2,9 +2,8 @@
 
 @{
     ViewData["Title"] = "User Details | جزئیات کاربر";
-    Layout = "~/Areas/Admin/Views/Shared/_PanelLayout.cshtml";
+    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
 }
-
 
 <div>
     <h4 id="edit-mode" class="text-center text-white rounded-3 p-1 mt-3" hidden></h4>
@@ -28,11 +27,11 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Mobile)
         </dd>
-@*         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Password)
+        @*         <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Password)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Password)
+        @Html.DisplayFor(model => model.Password)
         </dd> *@
         @*         <dt class = "col-sm-2">
         @Html.DisplayNameFor(model => model.Code)
@@ -55,7 +54,7 @@
     </dl>
 </div>
 <div>
-    <a asp-area="admin" asp-controller="panel" asp-action="EditUser" asp-route-id="@Model?.Id" class="btn btn-warning"><span class="fa fa-lg fa-edit"></span> ویرایش پروفایل</a> |
+    <a asp-area="" asp-controller="profile" asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning"><span class="fa fa-lg fa-edit"></span> ویرایش پروفایل</a> |
     <a class="text-decoration-none btn btn-danger text-white" asp-action="Index"><span class="fa fa-angle-double-right fa-lg"></span> بازگشت</a>
 </div>
 

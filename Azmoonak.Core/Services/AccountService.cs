@@ -94,6 +94,35 @@ public class AccountService : IAccount
         }
     }
 
+
+    public async Task<bool> EditAdminDashbord(EditAdminViewModel admin)
+    {
+        try
+        {
+            User editAdmin = new User()
+            {
+                Id = admin.Id,
+                RoleId = admin.RoleId,
+                FName = admin.FName,
+                LName = admin.LName,
+                Mobile = admin.Mobile,
+                Password = admin.Password,
+            };
+            _context.Users.Update(editAdmin);
+            await _context.SaveChangesAsync();
+            return await Task.FromResult(true);
+        }
+        catch (Exception error)
+        {
+            Console.WriteLine(error.Message,
+                Console.BackgroundColor = ConsoleColor.Red,
+                Console.ForegroundColor = ConsoleColor.Yellow);
+            return await Task.FromResult(false);
+        }
+    }
+
+
+
     public async Task<bool> EditUser(EditUserViewModel user)
     {
         try
@@ -187,5 +216,11 @@ public class AccountService : IAccount
 
             return null;
         }
+    }
+
+    public async Task<User> GetAdmin(Guid AdminId)
+    {
+        var admin = await _context.Users.Include(u => u.Role).FirstOrDefaultAsync(u => u.Id == AdminId);
+        return await Task.FromResult(admin);
     }
 }

@@ -28,9 +28,14 @@ public class AccountController : Controller
             {
                 return RedirectToAction(nameof(Login));
             }
-            //ModelState.AddModelError("Mobile", "احتمالا این شماره موبایل پیش از این ثبت شده است");
-            //ModelState.AddModelError("RePassword", "مقایسه رمز ها اشتباه میباشد");
+            if (register.Password!=register.RePassword)
+            {
+                ModelState.AddModelError("RePassword", "مقایسه رمز ها اشتباه میباشد");
+                return View(register);
+            }
+            ModelState.AddModelError("Mobile", "احتمالا این شماره موبایل پیش از این ثبت شده است");
             return View(register);
+
         }
         return View(register);
     }

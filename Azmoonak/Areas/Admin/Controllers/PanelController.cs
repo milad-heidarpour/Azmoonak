@@ -54,6 +54,37 @@ public class PanelController : Controller
         return View(certificate);
     }
 
+    public async Task<IActionResult> EditAdminDashbord(Guid id)
+    {
+        var admin=await _account.GetAdmin(id);
+        if (admin !=null)
+        {
+            EditAdminViewModel viewModel = new EditAdminViewModel()
+            {
+                Id = admin.Id,
+                RoleId = admin.RoleId,
+                FName = admin.FName,
+                LName = admin.LName,
+                Mobile = admin.Mobile,
+                Password = admin.Password,
+            };
+            return View(viewModel);
+        }
+        return RedirectToAction(nameof(Index));
+    }
+
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> EditAdminDashbord(EditAdminViewModel admin)
+    {
+        if (ModelState.IsValid)
+        {
+            var result = await _account.EditAdminDashbord(admin);
+            return RedirectToAction(nameof(AdminDetails), new { id = admin.Id, editAdmin = result });
+        }
+        return View(admin);
+    }
 
     public async Task<IActionResult> EditUser(Guid id)
     {
@@ -89,6 +120,18 @@ public class PanelController : Controller
         }
         ViewBag.RoleId = new SelectList(await _account.GetRoles(), "Id", "RoleName");
         return View(user);
+    }
+
+    public async Task<IActionResult> AdminDetails(Guid id, bool editAdmin = false)
+    {
+        var admin = await _account.GetAdmin(id);
+        if (admin != null)
+        {
+            ViewBag.EditResult = editAdmin;
+            return View(admin);
+        }
+        //return NotFound();
+        return RedirectToAction(nameof(Index));
     }
     public async Task<IActionResult> Details(Guid id, bool editUser = false)
     {

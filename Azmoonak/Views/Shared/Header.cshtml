@@ -65,11 +65,12 @@
                 @{
                     if (User.Identity.IsAuthenticated)
                     {
-                        <a asp-area="" asp-controller="profile" asp-action="Index" style="cursor: pointer; color:white;" title="ورود به پنل کاربری" class="fa fa-user fa-lg"></a>
+                        <a asp-area="" asp-controller="profile" asp-action="Index" style="cursor: pointer; color:white;" title="ورود به پنل کاربری" class="fa fa-user fa-lg text-decoration-none"></a>
+                        <h6>@ViewBag.UserFName @ViewBag.UserLName</h6>
                     }
                     else
                     {
-                        <a asp-area="" asp-controller="account" asp-action="login" style="cursor: pointer; color:white;" title="ورود به پنل کاربری" class="fa fa-user fa-lg"></a>
+                        <a asp-area="" asp-controller="account" asp-action="login" style="cursor: pointer; color:white;" title="ورود به پنل کاربری" class="fa fa-user-times fa-lg text-decoration-none"></a>
                     }
                 }
             </div>

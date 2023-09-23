@@ -9,14 +9,22 @@ public class HomeController : Controller
     IGroup _group;
     IQuestion _question;
     IAccount _account;
-    public HomeController(IGroup group, IQuestion question, IAccount account)
+    IProfile _profile;
+    public HomeController(IGroup group, IQuestion question, IAccount account, IProfile profile)
     {
         _group = group;
         _question = question;
         _account = account;
+        _profile = profile;
     }
     public async Task<IActionResult> Index()
     {
+        if (User.Identity.IsAuthenticated)
+        {
+            var user= await _profile.GetUserName(UserMobile: User.Identity.Name);
+            ViewBag.UserFName = user.FName;
+            ViewBag.UserLName=user.LName;
+        }
         var groups= await _group.GetGroups();
         ViewBag.UserCount= (await _account.GetUsers()).Count;
         ViewBag.QuestionCount= (await _question.GetQuestions()).Count;

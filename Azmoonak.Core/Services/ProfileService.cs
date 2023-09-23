@@ -1,4 +1,5 @@
 ﻿using Azmoonak.Core.Interface;
+using Azmoonak.Core.ViewModels;
 using Azmoonak.Database.Context;
 using Azmoonak.Database.Models;
 using Microsoft.EntityFrameworkCore;
@@ -50,6 +51,12 @@ public class ProfileService:IProfile
         }
     }
 
+    public async Task<User> GetUserName(string UserMobile)
+    {
+        var User = await _context.Users.FirstOrDefaultAsync(u=>u.Mobile==UserMobile);
+        return User;
+    }
+
     public async Task<List<Certificate>> GetCertificate(Guid userId)
     {
 
@@ -73,5 +80,37 @@ public class ProfileService:IProfile
             }
         }).FirstOrDefaultAsync();
         return user;
+    }
+
+    public async Task<User> GetUser(Guid id)//id=userid
+    {
+        var user = await _context.Users.Include(u=>u.Role).FirstOrDefaultAsync(u => u.Id == id);
+        return user;
+    }
+
+    public async Task<bool> EditProfile(EditUserDashbordViewModel user)
+    {
+        try
+        {
+            User editUser = new User()
+            {
+                Id = user.Id,
+                RoleId = user.RoleId,
+                FName = user.FName,
+                LName = user.LName,
+                Mobile = user.Mobile,
+                Password = user.Password,
+            };
+            _context.Users.Update(editUser);
+            await _context.SaveChangesAsync();
+            return await Task.FromResult(true);
+        }
+        catch (Exception error)
+        {
+            Console.WriteLine(error.Message,
+                Console.BackgroundColor = ConsoleColor.Red,
+                Console.ForegroundColor = ConsoleColor.Yellow);
+            return await Task.FromResult(false);
+        }
     }
 }
