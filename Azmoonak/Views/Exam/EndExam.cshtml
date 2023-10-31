@@ -1,20 +1,309 @@
-﻿@model Azmoonak.Core.ViewModels.QuestionUserViewModel
+﻿@using Azmoonak.Core.Classes;
+@model Azmoonak.Core.ViewModels.QuestionUserViewModel
 
 @{
     ViewData["Title"] = "End Exam | پایان آزمون";
     Layout = "~/Views/Shared/_ExamLayout.cshtml";
 }
 
+<div class="app container-fluid bg-dager text-black">
+    <div class="row">
 
 
-<h1>شرکت کننده : @Model.User.FName @Model.User.LName</h1>
-<h1>نمره نهایی : @Model.Score</h1>
-<h1>تعداد جواب های درست : @Model.CorrectAnswer</h1>
-<h1>تعداد جواب های غلط : @Model.FalseAnswer</h1>
-<h1>بدون پاسخ ها : @Model.NoAnswer</h1>
 
-<h1>دکمه برگشت به خانه </h1>
-<h1>دکمه رفتن به صفحه نمایش کارنامه شاید</h1>
+
+        <div class="d-flex justify-content-around mb-4 mt-1 border-bottom pb-2">
+            <div><span>نام</span> : <span>@Model.User.FName @Model.User.LName</span></div>
+            <div>
+                <span>تاریخ</span> : <span>
+                    @{
+                        var time = await new DateClass().GetPersianDate();
+                    }
+                    @time
+                </span>
+            </div>
+            <div><span>مدت آزمون</span> : <span>40دقیقه</span></div>
+            <div><span>زمان اتمام آزمون</span> : <span>6:51</span></div>
+        </div>
+
+
+        <div class=" d-flex justify-content-around w-50 mb-3">
+            <span><strong>پاسخ درست:</strong><i class="fa fa-check-circle text-success fa-lg check"></i></span>
+            <span><strong>پاسخ غلط:</strong><i class="fa fa-times-circle-o text-danger fa-lg check"></i></span>
+            <span><strong>گزینه درست:</strong><i class="fa fa-check-circle-o text-success fa-lg check"></i></span>
+            <span><strong> بدون پاسخ: </strong><i class="fa fa-question-circle-o fa-lg"></i></span>
+        </div>
+
+        <div class="row" >
+
+            <div class="col-5  d-flex justify-content-center">
+                <table class="test-list shadow">
+                    <tr>
+                        <th>شماره تست</th>
+                        <th>الف</th>
+                        <th>ب</th>
+                        <th>ج</th>
+                        <th>د</th>
+                    </tr>
+
+                    @{
+                        var question = Model.Question.ToList();
+                        int Qnum = 1;
+
+                        for (int i = 0; i < question.Count(); i++)
+                        {
+                            <tr>
+                                @{
+                                    if (question.ElementAt(i).UserAn == question.ElementAt(i).AnOne)
+                                    {
+                                        if (question.ElementAt(i).UserAn == question.ElementAt(i).CorrectAn)
+                                        {
+                                            <td>@Qnum</td>
+                                            <td><i class="fa fa-check-circle text-success fa-lg check"></i></td>
+                                            <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                            <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                            <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                            Qnum++;
+                                        }
+                                        else
+                                        {
+                                            if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnTwo)
+                                            {
+                                                <td>@Qnum</td>
+                                                <td><i class="fa fa-times-circle-o text-danger fa-lg check"></i></td>
+                                                <td><i class="fa fa-check-circle-o text-success fa-lg check"></i></td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                            }
+                                            if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnThree)
+                                            {
+                                                <td>@Qnum</td>
+                                                <td><i class="fa fa-times-circle-o text-danger fa-lg check"></i></td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                                <td><i class="fa fa-check-circle-o text-success fa-lg check"></i></td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                            }
+                                            if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnFour)
+                                            {
+                                                <td>@Qnum</td>
+                                                <td><i class="fa fa-times-circle-o text-danger fa-lg check"></i></td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                                <td><i class="fa fa-check-circle-o text-success fa-lg check"></i></td>
+                                            }
+
+                                            Qnum++;
+                                        }
+
+                                    }
+                                    if (question.ElementAt(i).UserAn == question.ElementAt(i).AnTwo)
+                                    {
+                                        if (question.ElementAt(i).UserAn == question.ElementAt(i).CorrectAn)
+                                        {
+                                            <td>@Qnum</td>
+                                            <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                            <td><i class="fa fa-check-circle text-success fa-lg check" fa-lg></i></td>
+                                            <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                            <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                            Qnum++;
+                                        }
+                                        else
+                                        {
+                                            if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnOne)
+                                            {
+                                                <td>@Qnum</td>
+                                                <td><i class="fa fa-check-circle-o text-success fa-lg check"></i></td>
+                                                <td><i class="fa fa-times-circle-o text-danger fa-lg check"></i></td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                            }
+                                            if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnThree)
+                                            {
+                                                <td>@Qnum</td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                                <td><i class="fa fa-times-circle-o text-danger fa-lg check"></i></td>
+                                                <td><i class="fa fa-check-circle-o text-success fa-lg check"></i></td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                            }
+                                            if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnFour)
+                                            {
+                                                <td>@Qnum</td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                                <td><i class="fa fa-times-circle-o text-danger fa-lg check"></i></td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                                <td><i class="fa fa-check-circle-o text-success fa-lg check"></i></td>
+                                            }
+
+                                            Qnum++;
+                                        }
+                                    }
+                                    if (question.ElementAt(i).UserAn == question.ElementAt(i).AnThree)
+                                    {
+                                        if (question.ElementAt(i).UserAn == question.ElementAt(i).CorrectAn)
+                                        {
+                                            <td>@Qnum</td>
+                                            <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                            <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                            <td><i class="fa fa-check-circle text-success fa-lg check"></i></td>
+                                            <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                            Qnum++;
+                                        }
+                                        else
+                                        {
+                                            if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnOne)
+                                            {
+                                                <td>@Qnum</td>
+                                                <td><i class="fa fa-check-circle-o text-success fa-lg check"></i></td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                                <td><i class="fa fa-times-circle-o text-danger fa-lg check"></i></td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                            }
+                                            if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnTwo)
+                                            {
+                                                <td>@Qnum</td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                                <td><i class="fa fa-check-circle-o text-success fa-lg check"></i></td>
+                                                <td><i class="fa fa-times-circle-o text-danger fa-lg check"></i></td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                            }
+                                            if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnFour)
+                                            {
+                                                <td>@Qnum</td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                                <td><i class="fa fa-times-circle-o text-danger fa-lg check"></i></td>
+                                                <td><i class="fa fa-check-circle-o text-success fa-lg check"></i></td>
+                                            }
+
+                                            Qnum++;
+                                        }
+                                    }
+                                    if (question.ElementAt(i).UserAn == question.ElementAt(i).AnFour)
+                                    {
+                                        if (question.ElementAt(i).UserAn == question.ElementAt(i).CorrectAn)
+                                        {
+                                            <td>@Qnum</td>
+                                            <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                            <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                            <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                            <td><i class="fa fa-check-circle text-success fa-lg check"></i></td>
+                                            Qnum++;
+                                        }
+                                        else
+                                        {
+                                            if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnOne)
+                                            {
+                                                <td>@Qnum</td>
+                                                <td><i class="fa fa-check-circle-o text-success fa-lg check"></i></td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                                <td><i class="fa fa-times-circle-o text-danger fa-lg check"></i></td>
+                                            }
+                                            if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnTwo)
+                                            {
+                                                <td>@Qnum</td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                                <td><i class="fa fa-check-circle-o text-success fa-lg check"></i></td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                                <td><i class="fa fa-times-circle-o text-danger fa-lg check"></i></td>
+                                            }
+                                            if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnThree)
+                                            {
+                                                <td>@Qnum</td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                                <td><i class="fa fa-circle-o fa-lg"></i></td>
+                                                <td><i class="fa fa-check-circle-o text-success fa-lg check"></i></td>
+                                                <td><i class="fa fa-times-circle-o text-danger fa-lg check"></i></td>
+                                            }
+
+                                            Qnum++;
+                                        }
+                                    }
+                                    if (question.ElementAt(i).UserAn == null)
+                                    {
+
+                                        if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnOne)
+                                        {
+                                            <td>@Qnum</td>
+                                            <td><i class="fa fa-check-circle text-success fa-lg check"></i></td>
+                                            <td><i class="fa fa-question-circle-o fa-lg"></i></td>
+                                            <td><i class="fa fa-question-circle-o fa-lg"></i></td>
+                                            <td><i class="fa fa-question-circle-o fa-lg"></i></td>
+                                        }
+                                        if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnTwo)
+                                        {
+                                            <td>@Qnum</td>
+                                            <td><i class="fa fa-question-circle-o fa-lg"></i></td>
+                                            <td><i class="fa fa-check-circle text-success fa-lg check"></i></td>
+                                            <td><i class="fa fa-question-circle-o fa-lg"></i></td>
+                                            <td><i class="fa fa-question-circle-o fa-lg"></i></td>
+                                        }
+                                        if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnThree)
+                                        {
+                                            <td>@Qnum</td>
+                                            <td><i class="fa fa-question-circle-o fa-lg"></i></td>
+                                            <td><i class="fa fa-question-circle-o fa-lg"></i></td>
+                                            <td><i class="fa fa-check-circle text-success fa-lg check"></i></td>
+                                            <td><i class="fa fa-question-circle-o fa-lg"></i></td>
+                                        }
+                                        if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnFour)
+                                        {
+                                            <td>@Qnum</td>
+                                            <td><i class="fa fa-question-circle-o fa-lg"></i></td>
+                                            <td><i class="fa fa-question-circle-o fa-lg"></i></td>
+                                            <td><i class="fa fa-question-circle-o fa-lg"></i></td>
+                                            <td><i class="fa fa-check-circle text-success fa-lg check"></i></td>
+                                        }
+
+                                        Qnum++;
+                                    }
+                                }
+                            </tr>
+                        }
+                    }
+
+                </table>
+            </div>
+            
+
+            <div class="col-7">
+                <table class="result-table shadow">
+                    <tr>
+                        <th>درس</th>
+                        <th>تعداد سوال</th>
+                        <th>پاسخ درست<i class="fa fa-check-circle text-success fa-lg check"></i></th>
+                        <th>پاسخ غلط<i class="fa fa-times-circle-o text-danger fa-lg check"></i></th>
+                        <th>بدون پاسخ <i class="fa fa-question-circle-o fa-lg"></i></th>
+                        <th>نمره نهایی</th>
+                    </tr>
+                    <tr>
+                        <td>@Model.GroupName</td>
+                        <td>@Model.Question.Count()</td>
+                        <td>@Model.CorrectAnswer</td>
+                        <td>@Model.FalseAnswer</td>
+                        <td>@Model.NoAnswer</td>
+                        <td>@Model.Score</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="w-50 float-start ms-5 bg-secondary-subtle shadow mt-5 text-end pe-0 rounded-1 ">
+            <ul class="list-unstyled  pe-3 pt-2">
+                <li><span><i class="fa fa-check-circle text-success fa-lg check"></i>پاسخ های درست</span> : @Model.CorrectAnswer <span></span></li>
+                <li><span><i class="fa fa-times-circle-o text-danger fa-lg check"></i>پاسخ غلط</span> : @Model.FalseAnswer<span></span></li>
+                <li><span><i class="fa fa fa-circle-o fa-lg"></i>بدون پاسخ</span> : @Model.NoAnswer<span</span></li>
+            </ul>
+        </div>
+
+
+
+       
+    </div>
+
+        <a class=   "btn btn-success text-decoration-none" asp-area="" asp-controller="home" asp-action="index"><span class="fa fa-home"></span> بازگشت به خانه</a>
+</div>
 
 <html>
 <head>
@@ -23,7 +312,7 @@
     <title>Pie Chart</title>
 </head>
 <body>
-    <div dir="rtl" class="col-5" id="chartContainer"></div>
+    <div class="col-6" id="chartContainer" ></div>
     <script type="text/javascript">
         window.onload = function () {
             var chart = new CanvasJS.Chart("chartContainer", {
@@ -55,8 +344,8 @@
             chart.render();
         };
     </script>
-
 </body>
 </html>
+
 
 

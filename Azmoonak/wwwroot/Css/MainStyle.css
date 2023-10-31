@@ -1031,8 +1031,6 @@ body {
 
 
 
-/*style sectioned showexample groups form exam*/
-
 * {
     margin: 0;
     padding: 0;
@@ -1063,7 +1061,7 @@ body {
     box-shadow: 4px 4px 8px rgb(199, 199, 199);
     transition: 1s ease;
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
 }
 
@@ -1078,12 +1076,26 @@ body {
     right: 0;
     bottom: 0;
     border-radius: 5px;
-    background-color: #078679;
+    background-color: #FCA402;
     transition: all .4s;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow-y: hidden;
 }
+
+/*.btn-automat a {
+        color: white !important;
+    }*/
+
+
+
+
+
+
+
+
 
 
 
@@ -1092,6 +1104,8 @@ body {
     overflow: hidden;
     opacity: 0;
     transition: .5s;
+    list-style: none;
+    margin-left: -160px !important;
 }
 
 .child-list:hover .h1 {
@@ -1102,5 +1116,59 @@ body {
 
 
 .child-list:hover .hoverd {
-    height: 100%;
+    height: 50%;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.result-table {
+    width: 100%;
+    text-align: center;
+}
+
+    .result-table td, th {
+        border: 1px solid #a1a1a1 !important;
+        text-align: center;
+    }
+
+    .result-table th {
+        background-color: #ddd;
+    }
+
+.check {
+    border-radius: 50% !important;
+    height: 20px;
+    width: 20px;
+    padding: 7px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+}
+
+.test-list {
+    width: 75%;
+    text-align: center;
+}
+
+    .test-list td {
+        border: 1px solid #a1a1a1;
+    }
+
+    .test-list th {
+        background-color: #ddd;
+    }

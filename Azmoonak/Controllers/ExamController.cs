@@ -34,6 +34,7 @@ public class ExamController : Controller
     {
         var questions = (await _question.GetGroupQuestions(id)).Take(40);
         TempData["GroupId"] = id;
+        
 
         GroupQuestionViewModel viewModel = new GroupQuestionViewModel()
         {
@@ -49,11 +50,13 @@ public class ExamController : Controller
     {
 
         var user = await _profile.GetUser(User.Identity.Name);
+        var question = await _question.GetQuestion(userAn.FirstOrDefault().Id);//for getting groupname برای گرفتن اسم درس 
 
         double _score = 0;
         int _correctAnswer = 0;
         int _falseAnswer = 0;
         int _noAnswer = 0;
+        
 
 
         foreach (var item in userAn)
@@ -89,6 +92,7 @@ public class ExamController : Controller
 
         QuestionUserViewModel viewModel = new QuestionUserViewModel()
         {
+            GroupName=question.Group.GroupName,
             Question = userAn,
             User = user,
             Score = _score,

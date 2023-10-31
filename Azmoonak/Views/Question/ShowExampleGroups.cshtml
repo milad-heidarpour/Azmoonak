@@ -1,0 +1,11 @@
+﻿@model Azmoonak.Core.ViewModels.GroupQuestionViewModel
+
+@{
+    ViewData["Title"] = "Show Example Groups | نمایش دسته بندی سوالات";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div>
+    <partial name="ExampleQuestionGroupPartial.cshtml" model="@Model.Groups" />
+</div>
+

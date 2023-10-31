@@ -1,21 +1,35 @@
 ﻿@model IEnumerable<Azmoonak.Database.Models.Group>
 
-@foreach (var item in Model)
-{
-            <div class="child-list">
+<h4 class="text-center mt-3">لیست تمامی آزمون ها</h4>
+<div class="container-fluid my-5">
+    <div class="row gap-5  justify-content-center">
+        @foreach (var item in Model)
+        {
 
-                <h2>hover it is elemnt</h2>
 
+
+
+            <div class="child-list bg-dark border-2">
+                <h2 class="mt-5 text-white text-uppercase">@item.GroupName</h2>
                 <div class="hoverd">
-
-                    <li><a asp-area="" asp-controller="exam" asp-action="details" asp-route-id="@item.Id" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Details('@(item.Id)')"> @item.GroupName</a></li>
-
+                    <h6>برای شروع کلیک  کنید</h6>
+                    <li class="h1 btn btn-automat bg-secondary mt-3"><a asp-area="" asp-controller="exam" asp-action="details" asp-route-id="@item.Id" data-bs-toggle="modal" data-bs-target="#exampleModal" class="text-decoration-none text-white" onclick="Details('@(item.Id)')"> @item.GroupName</a></li>
                 </div>
-
             </div>
 
-   
-}
+
+
+
+
+        }
+    </div>
+</div>
+
+
+
+
+
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

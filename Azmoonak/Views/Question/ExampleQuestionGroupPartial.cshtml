@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Azmoonak.Database.Models.Group>
+
+<h4 class="text-center mt-3">لیست تمامی نمونه سوالات</h4>
+<div class="container-fluid my-5">
+    <div class="row gap-5  justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="child-list bg-dark border-2">
+                <h2 class="mt-5 text-white text-uppercase">@item.GroupName</h2>
+                <div class="hoverd">
+                    <h6>برای دیدن نمونه سوالات کلیک  کنید</h6>
+                    <li class="h1 btn btn-automat bg-secondary mt-3"><a asp-area="" asp-controller="question" asp-action="GroupQuestion" asp-route-id="@item.Id" class="text-decoration-none text-white"> @item.GroupName</a></li>
+                </div>
+            </div>
+        }
+    </div>
+</div>

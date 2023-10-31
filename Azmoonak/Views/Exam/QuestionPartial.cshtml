@@ -8,7 +8,7 @@
             <!--related Question -->
             <div class="bg-q">
                 <fieldset>
-                    <h2 class="q-question">@Model.ElementAt(i).QText</h2>
+                    <h2 class="q-question">(@n) @Model.ElementAt(i).QText</h2>
                     <span class="q-form"><span class="q-alpha"><input type="radio" id='@("anone-"+@n)' name="browser" onclick="myFunction(this.value,@n)" value="@Model.ElementAt(i).AnOne">الف) @Model.ElementAt(i).AnOne </span></span>
                     <hr>
                     <span class="q-form"><span class="q-alpha"><input type="radio" id='@("antwo-"+@n)' name="browser" onclick="myFunction(this.value,@n)" value="@Model.ElementAt(i).AnTwo">ب) @Model.ElementAt(i).AnTwo </span></span>
@@ -18,7 +18,7 @@
                     <span class="q-form"><span class="q-alpha"><input type="radio" id='@("anfour-"+@n)' name="browser" onclick="myFunction(this.value,@n)" value="@Model.ElementAt(i).AnFour">د) @Model.ElementAt(i).AnFour </span></span>
                     <hr>
                 </fieldset>
-                
+
 
 
                 <input name="[@i].Id" value="@Model.ElementAt(i).Id" readonly hidden>
@@ -40,9 +40,8 @@
     <button class="btn btn-success" type="submit">ارسال</button>
 
     <script>
-        function myFunction(browser,n) {
-            document.getElementById("result-"+n).value = browser;
+        function myFunction(browser, n) {
+            document.getElementById("result-" + n).value = browser;
         }
     </script>
 </form>
-

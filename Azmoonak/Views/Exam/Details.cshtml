@@ -1,10 +1,14 @@
 ﻿@model Azmoonak.Database.Models.Group
 
 <div>
-    <h5>دسته بندی آزمون : @Model.GroupName</h5>
-    <h5>مدت زمان آزمون : 40 دقیقه</h5>
-    <h5>تعداد سوالات : 40 </h5>
-    <h5>باید متن های بیشتری اضافه کنم</h5>
+    <h3><span class="fa fa-list"></span> دسته بندی آزمون : @Model.GroupName</h3>
+    <h4><span class="fa fa-clock-o"></span> مدت زمان پاسخگویی : 40 دقیقه</h4>
+    <h4><span class="fa fa-question-circle-o"></span> تعداد سوالات : 40 </h4>
+    <hr />
+    <h6 style="color:red;">توجه!</h6>
+    <h6>1) سوالات هیچ گونه نمره منفی نداشته پس به تمام سوالات پاسخ دهید</h6>
+    <h6>2) بعد از اتمام امتحان , پاسخ نامه به شما نمایش داده می شود</h6>
+    <h6>3) لطفا برای اطمینان از عملکرد و تجربه بهتر از مرورگرهای مدرن و به روز مانند <span class="fa fa-chrome"></span> کروم یا <span class="fa fa-firefox"></span> فایرفاکس استفاده کنید.</h6>
     <hr />
     <h4 class="text-danger text-center">آیا آزمون را شروع میکنید؟</h4>
     <form asp-area="" asp-controller="exam" asp-action="startexam" asp-route-id="@Model.Id" class="text-center">

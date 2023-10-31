@@ -26,6 +26,16 @@ public class QuestionController : Controller
         return View(viewModel);
         //اینجا باید دسته بندی گروه هارو نمایش بدم که روی هر کدو زد بره نمونه سوالات اون دسته رو نمایش بده با ویوی باحال
     }
+    public async Task<IActionResult> ShowExampleGroups()//برای نمایش گروه نمونه سوالات
+    {
+        var groups = await _group.GetGroups();
+
+        GroupQuestionViewModel viewModel = new GroupQuestionViewModel()
+        {
+            Groups = groups,
+        };
+        return View(viewModel);
+    }
     public async Task<IActionResult> GroupQuestion (int id)//id= groupid
     {
         var questions = await _question.GetGroupQuestions(id);

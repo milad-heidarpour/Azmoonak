@@ -86,13 +86,13 @@ public class AccountService : IAccount
         }
     }
 
-    public void Dispose()
-    {
-        if (_context != null)
+        public void Dispose()
         {
-            _context.Dispose();
+            if (_context != null)
+            {
+                _context.Dispose();
+            }
         }
-    }
 
 
     public async Task<bool> EditAdminDashbord(EditAdminViewModel admin)
