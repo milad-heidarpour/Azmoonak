@@ -9,15 +9,23 @@ public class QuestionController : Controller
 {
     IGroup _group;
     IQuestion _question;
-    public QuestionController(IGroup group, IQuestion question)
+    IProfile _profile;
+    public QuestionController(IGroup group, IQuestion question, IProfile profile)
     {
         _group = group;
         _question = question;
+        _profile = profile;
     }
 
     public async Task< IActionResult> Index()
     {
-        var groups = await _group.GetGroups();
+        if (User.Identity.IsAuthenticated)
+        {
+            var user = await _profile.GetUserName(UserMobile: User.Identity.Name);
+            ViewBag.UserFName = user.FName;
+            ViewBag.UserLName = user.LName;
+        }
+        var groups = (await _group.GetGroups()).Take(4);
 
         GroupQuestionViewModel viewModel = new GroupQuestionViewModel()
         {
@@ -28,6 +36,12 @@ public class QuestionController : Controller
     }
     public async Task<IActionResult> ShowExampleGroups()//برای نمایش گروه نمونه سوالات
     {
+        if (User.Identity.IsAuthenticated)
+        {
+            var user = await _profile.GetUserName(UserMobile: User.Identity.Name);
+            ViewBag.UserFName = user.FName;
+            ViewBag.UserLName = user.LName;
+        }
         var groups = await _group.GetGroups();
 
         GroupQuestionViewModel viewModel = new GroupQuestionViewModel()
@@ -38,6 +52,13 @@ public class QuestionController : Controller
     }
     public async Task<IActionResult> GroupQuestion (int id)//id= groupid
     {
+        if (User.Identity.IsAuthenticated)
+        {
+            var user = await _profile.GetUserName(UserMobile: User.Identity.Name);
+            ViewBag.UserFName = user.FName;
+            ViewBag.UserLName = user.LName;
+        }
+
         var questions = await _question.GetGroupQuestions(id);
         var groups = await _group.GetGroups();
 
@@ -60,6 +81,12 @@ public class QuestionController : Controller
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> GroupQuestion(List<Question> questions)
     {
+        if (User.Identity.IsAuthenticated)
+        {
+            var user = await _profile.GetUserName(UserMobile: User.Identity.Name);
+            ViewBag.UserFName = user.FName;
+            ViewBag.UserLName = user.LName;
+        }
         return View();
     }
 }

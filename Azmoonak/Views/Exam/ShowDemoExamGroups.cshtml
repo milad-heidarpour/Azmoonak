@@ -1,0 +1,10 @@
+﻿@model Azmoonak.Core.ViewModels.GroupQuestionViewModel
+
+@{
+    ViewData["Title"] = "Show Demo Exam Groups | نمایش گروه های دمو امتحان";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div>
+    <partial name="ExamDemoGroupspartial.cshtml" model="@Model.Groups" />
+</div>

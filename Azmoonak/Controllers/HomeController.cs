@@ -25,10 +25,11 @@ public class HomeController : Controller
             ViewBag.UserFName = user.FName;
             ViewBag.UserLName=user.LName;
         }
-        var groups= await _group.GetGroups();
+        var groups= (await _group.GetGroups()).Take(4);
+        var groupsCount= await _group.GetGroups();
         ViewBag.UserCount= (await _account.GetUsers()).Count;
         ViewBag.QuestionCount= (await _question.GetQuestions()).Count;
-        ViewBag.GroupCount=groups.Count;
+        ViewBag.GroupCount=groupsCount.Count();
 
         GroupQuestionViewModel viewModel = new GroupQuestionViewModel()
         {

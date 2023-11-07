@@ -24,8 +24,20 @@
                 <div class="row footer-uls">
                     <div class="col text-center">
                         <ul>
-                            <a asp-area="" asp-controller="exam" asp-action="showexamgroups">
-                            <li class="mt-4 mx-2">آزمون ها</li></a>
+                        @{
+                            if (User.Identity.IsAuthenticated)
+                            {
+                                <a asp-area="" asp-controller="exam" asp-action="showexamgroups">
+                                <li class="mt-4 mx-2">آزمون ها</li></a>
+                            }
+                            else
+                            {
+                                <a asp-area="" asp-controller="account" asp-action="login">
+                                <li class="mt-4 mx-2">آزمون ها</li></a>
+                            }
+                        }
+                            @* <a asp-area="" asp-controller="exam" asp-action="showexamgroups">
+                            <li class="mt-4 mx-2">آزمون ها</li></a> *@
                             <a asp-area="" asp-controller="question" asp-action="showexamplegroups">
                             <li class="mt-4 mx-2">نمونه سوالات</li></a>
                             <a href="#">

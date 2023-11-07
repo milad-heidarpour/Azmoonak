@@ -38,7 +38,17 @@
     <div class="gettingStartedguide text-end started">
         <h2>آزمون مورد نظر خودت رو راحت تر پیدا کن</h2>
         <h4>روی  دکمه زیر کلیک کن</h4>
-        <a asp-controller="exam" asp-action="ShowExamGroups" class="btn butn text-white">شروع</a>
+        @{
+            if (User.Identity.IsAuthenticated)
+            {
+                <a asp-area="" asp-controller="exam" asp-action="showexamgroups" class="btn butn text-white">شروع</a>
+            }
+            else
+            {
+                <a asp-area="" asp-controller="account" asp-action="login" class="btn butn text-white">شروع</a>
+            }
+        }
+        @* <a asp-controller="exam" asp-action="ShowExamGroups" class="btn butn text-white">شروع</a> *@
     </div>
 </div>
 
@@ -51,52 +61,34 @@
 
     <div class="row row-cols-md-3 w-100 p-0 m-0">
 
-
         <div class="col d-flex my-2 justify-content-center p-0 m-0">
-
-
             <div class="unveiling-box shadow  p-2">
-
-
                 <h4>آزمون ها</h4>
-
-
                 <i class="fa fa-scale fa-file-archive-o fa-2x my-3  pointer"></i>
-
-
                 <p class="mx-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae fugit aliquid provident?</p>
+                @{
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-area="" asp-controller="exam" asp-action="showexamgroups" class="btn w-75 btn-orenged mt-2">بیشتر</a>
+                    }
+                    else
+                    {
+                        <a asp-area="" asp-controller="account" asp-action="login" class="btn w-75 btn-orenged mt-2">بیشتر</a>
+                    }
+                }
 
-
-                <button class="btn w-75 btn-orenged mt-2">بیشتر</button>
-
-
+                @* <a asp-area="" asp-controller="exam" asp-action="showexamgroups" class="btn w-75 btn-orenged mt-2">بیشتر</a> *@
             </div>
-
-
         </div>
 
 
         <div class="col d-flex my-2 justify-content-center p-0 m-0">
-
-
             <div class="unveiling-box shadow p-2">
-
-
                 <h4>نمونه سوالات</h4>
-
-
                 <i class="fa fa-scale fa-book fa-2x my-3  pointer"></i>
-
-
                 <p class="mx-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae fugit aliquid provident?</p>
-
-
                 <a asp-area="" asp-controller="question" asp-action="ShowExampleGroups" class="btn w-75 btn-orenged mt-2">بیشتر</a>
-
-
             </div>
-
-
         </div>
 
 
@@ -149,15 +141,15 @@
 <div class="container-fluid">
     <div class="row SiteStatus">
         <div class="col text-center align-self-center">
-            <a href="#"><span class="fa fa-lg status-icons fa-group"></span>تعداد کاربران</a>
+            <a><span class="fa fa-lg status-icons fa-group"></span>تعداد کاربران</a>
             <h4 class="mt-3">@ViewBag.UserCount</h4>
         </div>
         <div class="col text-center align-self-center">
-            <a href="#"><span class="fa fa-lg status-icons fa-object-group"></span>تعداد دسته بندی ها</a>
+            <a ><span class="fa fa-lg status-icons fa-object-group"></span>تعداد دسته بندی ها</a>
             <h4 class="mt-3">@ViewBag.GroupCount</h4>
         </div>
         <div class="col text-center align-self-center">
-            <a href="#"><span class=" fa fa-lg fa-book status-icons"></span>تعداد سوالات</a>
+            <a><span class=" fa fa-lg fa-book status-icons"></span>تعداد سوالات</a>
             <h4 class="mt-3">@ViewBag.QuestionCount</h4>
         </div>
     </div>

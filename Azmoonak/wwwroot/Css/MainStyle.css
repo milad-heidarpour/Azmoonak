@@ -56,8 +56,8 @@ body {
         content: "";
         width: 15px;
         height: 15px;
-        /*background-color: #ffa200;*/
-        background-color: var(--orenged-color);
+        background-color: #ffa200;
+        /*background-color: var(--orenged-color);*/
         position: absolute;
         top: 62.8px;
         left: 94px;
@@ -73,8 +73,8 @@ body {
         content: "";
         width: 15px;
         height: 15px;
-        /*background-color: #ffa200;*/
-        background-color: var(--orenged-color);
+        background-color: #ffa200;
+        /*background-color: var(--orenged-color);*/
         position: absolute;
         top: 63.3px;
         left: -9px;
@@ -144,8 +144,8 @@ body {
 
 
 .bg-site-mode-color {
-    /*background-color: #ffa200;*/
-    background-color: var(--orenged-color);
+    background-color: #ffa200;
+    /*background-color: var(--orenged-color);*/
 }
 
 
@@ -240,8 +240,12 @@ body {
 
 
 
-        .sample-question li:hover a {
+        .sample-question li a {
             color: black !important;
+            text-decoration:none;
+            display:flex;
+            justify-content:center;
+            padding:4px !important;
         }
 
 
@@ -631,7 +635,7 @@ body {
 .unveiling-box {
     width: 300px;
     height: 290px;
-    background-color: #ff5e00;
+    background-color: #ffa200;
     color: #fff;
     border-radius: 10px;
     text-align: center;
@@ -717,7 +721,10 @@ body {
 }
 
     .SiteStatus a {
-        text-decoration: none;
+        display: flex;
+        text-decoration: none !important;
+        flex-direction: column;
+        color: #ffa200;
     }
 
 .status-icons {

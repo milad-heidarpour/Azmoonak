@@ -28,6 +28,7 @@
 
                             <ul class="list-unstyled w-100 p-2">
                                 <li class="w-100 py-2 d-flex justify-content-center mt-1  align-items-center"><partial name="groupspartial" model="@Model.Groups" /></li>
+                                <li class="w-100  d-flex justify-content-center mt-1  align-items-center"><a asp-area="" asp-controller="question" asp-action="ShowExampleGroups">بیشتر</a></li>
                             </ul>
                         </div>
                     </li>
@@ -52,27 +53,26 @@
 
 
 
-            <div class="col-5 d-flex justify-content-around align-items-center h-100 rounded-start-4">
-                <div id="search" class="saerch form-control d-none d-md-block w-75">
-                    <label class="d-flex align-items-center justify-content-around position-relative" for="inpt">
-                        <input id="inpt" class="search-inpt form-control" type="search" placeholder="جستجو...">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                        </svg>
-                    </label>
+            <div class="col-5 d-flex justify-content-end align-items-center h-100 rounded-start-4">
+                <a class="text-decoration-none text-white" asp-area="" asp-controller="exam" asp-action="ShowDemoExamGroups">دمو امتحان</a>
+
+                <div class="d-flex flex-column align-items-center gap-2">
+                    @{
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <a asp-area="" asp-controller="profile" asp-action="Index" style="cursor: pointer; color:white;" title="ورود به پنل کاربری" class="fa fa-user fa-lg text-decoration-none text-black"></a>
+                            <h6 class="text-black">@ViewBag.UserFName @ViewBag.UserLName</h6>
+                            // <h6>@User.Identity.Name</h6>
+                        }
+                        else
+                        {
+                            <a asp-area="" asp-controller="account" asp-action="login" style="cursor: pointer; color:white;" title="ورود به پنل کاربری" class="fa fa-user-times fa-lg text-decoration-none text-black"></a>
+                        }
+                    }
+
                 </div>
 
-                @{
-                    if (User.Identity.IsAuthenticated)
-                    {
-                        <a asp-area="" asp-controller="profile" asp-action="Index" style="cursor: pointer; color:white;" title="ورود به پنل کاربری" class="fa fa-user fa-lg text-decoration-none"></a>
-                        <h6>@ViewBag.UserFName @ViewBag.UserLName</h6>
-                    }
-                    else
-                    {
-                        <a asp-area="" asp-controller="account" asp-action="login" style="cursor: pointer; color:white;" title="ورود به پنل کاربری" class="fa fa-user-times fa-lg text-decoration-none"></a>
-                    }
-                }
+
             </div>
         </div>
 

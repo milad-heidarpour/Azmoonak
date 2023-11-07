@@ -2,8 +2,8 @@
 
 <div>
     <h3><span class="fa fa-list"></span> دسته بندی آزمون : @Model.Group.GroupName</h3>
-    <h4><span class="fa fa-clock-o"></span> مدت زمان پاسخگویی : 40 دقیقه</h4>
-    <h4><span class="fa fa-question-circle-o"></span> تعداد سوالات : 40 </h4>
+    @* <h4><span class="fa fa-clock-o"></span> مدت زمان پاسخگویی : 40 دقیقه</h4> *@
+    <h4><span class="fa fa-question-circle-o"></span> تعداد سوالات : 5 </h4>
     <hr />
     <h6 style="color:red;">توجه!</h6>
     <h6>1) سوالات هیچ گونه نمره منفی نداشته پس به تمام سوالات پاسخ دهید</h6>
@@ -11,9 +11,9 @@
     <h6>3) لطفا برای اطمینان از عملکرد و تجربه بهتر از مرورگرهای مدرن و به روز مانند <span class="fa fa-chrome"></span> کروم یا <span class="fa fa-firefox"></span> فایرفاکس استفاده کنید.</h6>
     <hr />
     <h4 class="text-danger text-center">آیا آزمون را شروع میکنید؟</h4>
-    <form asp-area="" asp-controller="exam" asp-action="startexam" asp-route-id="@Model.Group.Id" class="text-center">
+    <form asp-area="" asp-controller="exam" asp-action="TestExamDemo" asp-route-id="@Model.Group.Id" class="text-center">
         <input asp-for="Group.Id" hidden />
         <button class="btn btn-success">بله</button>
-        <a asp-controller="exam" asp-action="showexamgroups" class="btn btn-danger">خیر</a>
+        <a asp-controller="exam" asp-action="ShowDemoExamGroups" class="btn btn-danger">خیر</a>
     </form>
 </div>

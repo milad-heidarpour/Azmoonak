@@ -1,0 +1,396 @@
+﻿@model Azmoonak.Core.ViewModels.QuestionUserViewModel
+
+@{
+    ViewData["Title"] = "EndDemoExam";
+    Layout = "~/Views/Shared/_ExamLayout.cshtml";
+}
+
+
+
+<div class="app container-fluid bg-dager text-black">
+    <div class="row">
+        <div class=" d-flex justify-content-around w-50 mb-3">
+            <span><strong>پاسخ درست:</strong><i class="fa fa-check-circle text-success fa-lg check"></i></span>
+            <span><strong>پاسخ غلط:</strong><i class="fa fa-times-circle-o text-danger fa-lg check"></i></span>
+            <span><strong>گزینه درست:</strong><i class="fa fa-check-circle-o text-success fa-lg check"></i></span>
+            <span><strong> بدون پاسخ: </strong><i class="fa fa-question-circle-o fa-lg"></i></span>
+        </div>
+    </div>
+
+    <div class="col-7">
+        <table class="result-table shadow">
+            <tr>
+                <th>درس</th>
+                <th>تعداد سوال</th>
+                <th>پاسخ درست<i class="fa fa-check-circle text-success fa-lg check"></i></th>
+                <th>پاسخ غلط<i class="fa fa-times-circle-o text-danger fa-lg check"></i></th>
+                <th>بدون پاسخ <i class="fa fa-question-circle-o fa-lg"></i></th>
+                <th>نمره نهایی</th>
+            </tr>
+            <tr>
+                <td>@Model.GroupName</td>
+                <td>@Model.Question.Count()</td>
+                <td>@Model.CorrectAnswer</td>
+                <td>@Model.FalseAnswer</td>
+                <td>@Model.NoAnswer</td>
+                <td>@Model.Score</td>
+            </tr>
+        </table>
+    </div>
+
+    @{
+        var question = Model.Question.ToList();
+        int Qnum = 1;
+
+        for (int i = 0; i < question.Count(); i++)
+        {
+            if (question.ElementAt(i).UserAn == question.ElementAt(i).AnOne)
+            {
+                if (question.ElementAt(i).UserAn == question.ElementAt(i).CorrectAn)
+                {
+                    <div class="bg-q">
+                        <h2 class="q-question">(@Qnum) @question.ElementAt(i).QText</h2>
+                        <span class="q-form"><span class="q-alpha"> الف) @question.ElementAt(i).AnOne </span> <i class="fa fa-check-circle text-success fa-lg check"></i></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">ب) @question.ElementAt(i).AnTwo </span></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">ج) @question.ElementAt(i).AnThree </span></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">د) @question.ElementAt(i).AnFour </span></span>
+                        <hr>
+                    </div>
+                    Qnum++;
+                }
+                else
+                {
+                    if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnTwo)
+                    {
+                        <div class="bg-q">
+                            <h2 class="q-question">(@Qnum) @question.ElementAt(i).QText</h2>
+                            <span class="q-form"><span class="q-alpha"> الف) @question.ElementAt(i).AnOne </span><i class="fa fa-times-circle-o text-danger fa-lg check"></i></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ب) @question.ElementAt(i).AnTwo </span><i class="fa fa-check-circle-o text-success fa-lg check"></i></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ج) @question.ElementAt(i).AnThree </span></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">د) @question.ElementAt(i).AnFour </span></span>
+                            <hr>
+                        </div>
+                    }
+                    if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnThree)
+                    {
+                        <div class="bg-q">
+                            <h2 class="q-question">(@Qnum) @question.ElementAt(i).QText</h2>
+                            <span class="q-form"><span class="q-alpha"> الف) @question.ElementAt(i).AnOne </span><i class="fa fa-times-circle-o text-danger fa-lg check"></i></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ب) @question.ElementAt(i).AnTwo </span></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ج) @question.ElementAt(i).AnThree </span><i class="fa fa-check-circle-o text-success fa-lg check"></i></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">د) @question.ElementAt(i).AnFour </span></span>
+                            <hr>
+                        </div>
+                    }
+                    if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnFour)
+                    {
+                        <div class="bg-q">
+                            <h2 class="q-question">(@Qnum) @question.ElementAt(i).QText</h2>
+                            <span class="q-form"><span class="q-alpha"> الف) @question.ElementAt(i).AnOne </span><i class="fa fa-times-circle-o text-danger fa-lg check"></i></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ب) @question.ElementAt(i).AnTwo </span></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ج) @question.ElementAt(i).AnThree </span></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">د) @question.ElementAt(i).AnFour </span><i class="fa fa-check-circle-o text-success fa-lg check"></i></span>
+                            <hr>
+                        </div>
+                    }
+
+                    Qnum++;
+                }
+            }
+
+
+
+            if (question.ElementAt(i).UserAn == question.ElementAt(i).AnTwo)
+            {
+                if (question.ElementAt(i).UserAn == question.ElementAt(i).CorrectAn)
+                {
+                    <div class="bg-q">
+                        <h2 class="q-question">(@Qnum) @question.ElementAt(i).QText</h2>
+                        <span class="q-form"><span class="q-alpha"> الف) @question.ElementAt(i).AnOne </span></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">ب) @question.ElementAt(i).AnTwo </span><i class="fa fa-check-circle text-success fa-lg check"></i></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">ج) @question.ElementAt(i).AnThree </span></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">د) @question.ElementAt(i).AnFour </span></span>
+                        <hr>
+                    </div>
+                    Qnum++;
+                }
+                else
+                {
+                    if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnOne)
+                    {
+                        <div class="bg-q">
+                            <h2 class="q-question">(@Qnum) @question.ElementAt(i).QText</h2>
+                            <span class="q-form"><span class="q-alpha"> الف) @question.ElementAt(i).AnOne </span><i class="fa fa-check-circle-o text-success fa-lg check"></i></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ب) @question.ElementAt(i).AnTwo </span><i class="fa fa-times-circle-o text-danger fa-lg check"></i></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ج) @question.ElementAt(i).AnThree </span></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">د) @question.ElementAt(i).AnFour </span></span>
+                            <hr>
+                        </div>
+                    }
+                    if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnThree)
+                    {
+                        <div class="bg-q">
+                            <h2 class="q-question">(@Qnum) @question.ElementAt(i).QText</h2>
+                            <span class="q-form"><span class="q-alpha"> الف) @question.ElementAt(i).AnOne </span></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ب) @question.ElementAt(i).AnTwo </span><i class="fa fa-times-circle-o text-danger fa-lg check"></i></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ج) @question.ElementAt(i).AnThree </span><i class="fa fa-check-circle-o text-success fa-lg check"></i></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">د) @question.ElementAt(i).AnFour </span></span>
+                            <hr>
+                        </div>
+                    }
+                    if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnFour)
+                    {
+                        <div class="bg-q">
+                            <h2 class="q-question">(@Qnum) @question.ElementAt(i).QText</h2>
+                            <span class="q-form"><span class="q-alpha"> الف) @question.ElementAt(i).AnOne </span></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ب) @question.ElementAt(i).AnTwo </span><i class="fa fa-times-circle-o text-danger fa-lg check"></i></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ج) @question.ElementAt(i).AnThree </span></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">د) @question.ElementAt(i).AnFour </span><i class="fa fa-check-circle-o text-success fa-lg check"></i></span>
+                            <hr>
+                        </div>
+                    }
+
+                    Qnum++;
+                }
+            }
+
+
+
+            if (question.ElementAt(i).UserAn == question.ElementAt(i).AnThree)
+            {
+                if (question.ElementAt(i).UserAn == question.ElementAt(i).CorrectAn)
+                {
+                    <div class="bg-q">
+                        <h2 class="q-question">(@Qnum) @question.ElementAt(i).QText</h2>
+                        <span class="q-form"><span class="q-alpha"> الف) @question.ElementAt(i).AnOne </span></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">ب) @question.ElementAt(i).AnTwo </span></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">ج) @question.ElementAt(i).AnThree </span><i class="fa fa-check-circle text-success fa-lg check"></i></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">د) @question.ElementAt(i).AnFour </span></span>
+                        <hr>
+                    </div>
+                    Qnum++;
+                }
+                else
+                {
+                    if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnOne)
+                    {
+                        <div class="bg-q">
+                            <h2 class="q-question">(@Qnum) @question.ElementAt(i).QText</h2>
+                            <span class="q-form"><span class="q-alpha"> الف) @question.ElementAt(i).AnOne </span><i class="fa fa-check-circle-o text-success fa-lg check"></i></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ب) @question.ElementAt(i).AnTwo </span></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ج) @question.ElementAt(i).AnThree </span><i class="fa fa-times-circle-o text-danger fa-lg check"></i></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">د) @question.ElementAt(i).AnFour </span></span>
+                            <hr>
+                        </div>
+                    }
+                    if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnTwo)
+                    {
+                        <div class="bg-q">
+                            <h2 class="q-question">(@Qnum) @question.ElementAt(i).QText</h2>
+                            <span class="q-form"><span class="q-alpha"> الف) @question.ElementAt(i).AnOne </span></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ب) @question.ElementAt(i).AnTwo </span><i class="fa fa-check-circle-o text-success fa-lg check"></i></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ج) @question.ElementAt(i).AnThree </span><i class="fa fa-times-circle-o text-danger fa-lg check"></i></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">د) @question.ElementAt(i).AnFour </span></span>
+                            <hr>
+                        </div>
+                    }
+                    if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnFour)
+                    {
+                        <div class="bg-q">
+                            <h2 class="q-question">(@Qnum) @question.ElementAt(i).QText</h2>
+                            <span class="q-form"><span class="q-alpha"> الف) @question.ElementAt(i).AnOne </span></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ب) @question.ElementAt(i).AnTwo </span></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ج) @question.ElementAt(i).AnThree </span><i class="fa fa-times-circle-o text-danger fa-lg check"></i></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">د) @question.ElementAt(i).AnFour </span><i class="fa fa-check-circle-o text-success fa-lg check"></i></span>
+                            <hr>
+                        </div>
+                    }
+
+                    Qnum++;
+                }
+            }
+
+
+
+
+            if (question.ElementAt(i).UserAn == question.ElementAt(i).AnFour)
+            {
+                if (question.ElementAt(i).UserAn == question.ElementAt(i).CorrectAn)
+                {
+                    <div class="bg-q">
+                        <h2 class="q-question">(@Qnum) @question.ElementAt(i).QText</h2>
+                        <span class="q-form"><span class="q-alpha"> الف) @question.ElementAt(i).AnOne </span></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">ب) @question.ElementAt(i).AnTwo </span></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">ج) @question.ElementAt(i).AnThree </span></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">د) @question.ElementAt(i).AnFour </span><i class="fa fa-check-circle text-success fa-lg check"></i></span>
+                        <hr>
+                    </div>
+                    Qnum++;
+                }
+                else
+                {
+                    if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnOne)
+                    {
+                        <div class="bg-q">
+                            <h2 class="q-question">(@Qnum) @question.ElementAt(i).QText</h2>
+                            <span class="q-form"><span class="q-alpha"> الف) @question.ElementAt(i).AnOne </span><i class="fa fa-check-circle-o text-success fa-lg check"></i></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ب) @question.ElementAt(i).AnTwo </span></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ج) @question.ElementAt(i).AnThree </span></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">د) @question.ElementAt(i).AnFour </span><i class="fa fa-times-circle-o text-danger fa-lg check"></i></span>
+                            <hr>
+                        </div>
+                    }
+                    if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnTwo)
+                    {
+                        <div class="bg-q">
+                            <h2 class="q-question">(@Qnum) @question.ElementAt(i).QText</h2>
+                            <span class="q-form"><span class="q-alpha"> الف) @question.ElementAt(i).AnOne </span></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ب) @question.ElementAt(i).AnTwo </span><i class="fa fa-check-circle-o text-success fa-lg check"></i></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ج) @question.ElementAt(i).AnThree </span></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">د) @question.ElementAt(i).AnFour </span><i class="fa fa-times-circle-o text-danger fa-lg check"></i></span>
+                            <hr>
+                        </div>
+                    }
+                    if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnThree)
+                    {
+                        <div class="bg-q">
+                            <h2 class="q-question">(@Qnum) @question.ElementAt(i).QText</h2>
+                            <span class="q-form"><span class="q-alpha"> الف) @question.ElementAt(i).AnOne </span></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ب) @question.ElementAt(i).AnTwo </span></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">ج) @question.ElementAt(i).AnThree </span><i class="fa fa-check-circle-o text-success fa-lg check"></i></span>
+                            <hr>
+                            <span class="q-form"><span class="q-alpha">د) @question.ElementAt(i).AnFour </span><i class="fa fa-times-circle-o text-danger fa-lg check"></i></span>
+                            <hr>
+                        </div>
+                    }
+
+                    Qnum++;
+                }
+            }
+
+
+
+
+            if (question.ElementAt(i).UserAn == null)
+            {
+
+                if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnOne)
+                {
+                    <div class="bg-q">
+                        <h2 class="q-question">(@Qnum) @question.ElementAt(i).QText</h2>
+                        <span class="q-form"><span class="q-alpha"> الف) @question.ElementAt(i).AnOne </span><i class="fa fa-check-circle text-success fa-lg check"></i></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">ب) @question.ElementAt(i).AnTwo </span><i class="fa fa-question-circle-o fa-lg"></i></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">ج) @question.ElementAt(i).AnThree </span><i class="fa fa-question-circle-o fa-lg"></i></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">د) @question.ElementAt(i).AnFour </span><i class="fa fa-question-circle-o fa-lg"></i></span>
+                        <hr>
+                    </div>
+                }
+                if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnTwo)
+                {
+                    <div class="bg-q">
+                        <h2 class="q-question">(@Qnum) @question.ElementAt(i).QText</h2>
+                        <span class="q-form"><span class="q-alpha"> الف) @question.ElementAt(i).AnOne </span><i class="fa fa-question-circle-o fa-lg"></i></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">ب) @question.ElementAt(i).AnTwo </span><i class="fa fa-check-circle text-success fa-lg check"></i></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">ج) @question.ElementAt(i).AnThree </span><i class="fa fa-question-circle-o fa-lg"></i></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">د) @question.ElementAt(i).AnFour </span><i class="fa fa-question-circle-o fa-lg"></i></span>
+                        <hr>
+                    </div>
+                }
+                if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnThree)
+                {
+                    <div class="bg-q">
+                        <h2 class="q-question">(@Qnum) @question.ElementAt(i).QText</h2>
+                        <span class="q-form"><span class="q-alpha"> الف) @question.ElementAt(i).AnOne </span><i class="fa fa-question-circle-o fa-lg"></i></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">ب) @question.ElementAt(i).AnTwo </span><i class="fa fa-question-circle-o fa-lg"></i></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">ج) @question.ElementAt(i).AnThree </span><i class="fa fa-check-circle text-success fa-lg check"></i></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">د) @question.ElementAt(i).AnFour </span><i class="fa fa-question-circle-o fa-lg"></i></span>
+                        <hr>
+                    </div>
+                }
+                if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnFour)
+                {
+                    <div class="bg-q">
+                        <h2 class="q-question">(@Qnum) @question.ElementAt(i).QText</h2>
+                        <span class="q-form"><span class="q-alpha"> الف) @question.ElementAt(i).AnOne </span><i class="fa fa-question-circle-o fa-lg"></i></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">ب) @question.ElementAt(i).AnTwo </span><i class="fa fa-question-circle-o fa-lg"></i></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">ج) @question.ElementAt(i).AnThree </span><i class="fa fa-question-circle-o fa-lg"></i></span>
+                        <hr>
+                        <span class="q-form"><span class="q-alpha">د) @question.ElementAt(i).AnFour </span><i class="fa fa-check-circle text-success fa-lg check"></i></span>
+                        <hr>
+                    </div>
+                }
+
+                Qnum++;
+            }
+
+        }
+    }
+
+    <a asp-area="" asp-controller="home" asp-action="index" class="btn btn-success text-decoration-none " >برگشت به خانه</a>
+</div>
+
+
+
+
+
+
+
+
