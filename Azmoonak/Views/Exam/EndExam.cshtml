@@ -57,7 +57,7 @@
                                 @{
                                     if (question.ElementAt(i).UserAn == question.ElementAt(i).AnOne)
                                     {
-                                        if (question.ElementAt(i).UserAn == question.ElementAt(i).CorrectAn)
+                                        if (question.ElementAt(i).AnOne == question.ElementAt(i).CorrectAn)
                                         {
                                             <td>@Qnum</td>
                                             <td><i class="fa fa-check-circle text-success fa-lg check" style="margin-left:12px;"></i></td>
@@ -76,7 +76,7 @@
                                                 <td><i class="fa fa-circle-o fa-lg"></i></td>
                                                 <td><i class="fa fa-circle-o fa-lg"></i></td>
                                             }
-                                            if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnThree)
+                                            else if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnThree)
                                             {
                                                 <td>@Qnum</td>
                                                 <td><i class="fa fa-times-circle-o text-danger fa-lg check" style="margin-left:12px;"></i></td>
@@ -84,7 +84,7 @@
                                                 <td><i class="fa fa-check-circle-o text-success fa-lg check" style="margin-left:12px;"></i></td>
                                                 <td><i class="fa fa-circle-o fa-lg"></i></td>
                                             }
-                                            if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnFour)
+                                            else if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnFour)
                                             {
                                                 <td>@Qnum</td>
                                                 <td><i class="fa fa-times-circle-o text-danger fa-lg check" style="margin-left:12px;"></i></td>
@@ -102,7 +102,7 @@
 
                                     if (question.ElementAt(i).UserAn == question.ElementAt(i).AnTwo)
                                     {
-                                        if (question.ElementAt(i).UserAn == question.ElementAt(i).CorrectAn)
+                                        if (question.ElementAt(i).AnTwo == question.ElementAt(i).CorrectAn)
                                         {
                                             <td>@Qnum</td>
                                             <td><i class="fa fa-circle-o fa-lg"></i></td>
@@ -121,7 +121,7 @@
                                                 <td><i class="fa fa-circle-o fa-lg"></i></td>
                                                 <td><i class="fa fa-circle-o fa-lg"></i></td>
                                             }
-                                            if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnThree)
+                                            else if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnThree)
                                             {
                                                 <td>@Qnum</td>
                                                 <td><i class="fa fa-circle-o fa-lg"></i></td>
@@ -129,7 +129,7 @@
                                                 <td><i class="fa fa-check-circle-o text-success fa-lg check" style="margin-left:12px;"></i></td>
                                                 <td><i class="fa fa-circle-o fa-lg"></i></td>
                                             }
-                                            if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnFour)
+                                            else if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnFour)
                                             {
                                                 <td>@Qnum</td>
                                                 <td><i class="fa fa-circle-o fa-lg"></i></td>
@@ -146,7 +146,7 @@
 
                                     if (question.ElementAt(i).UserAn == question.ElementAt(i).AnThree)
                                     {
-                                        if (question.ElementAt(i).UserAn == question.ElementAt(i).CorrectAn)
+                                        if (question.ElementAt(i).AnThree == question.ElementAt(i).CorrectAn)
                                         {
                                             <td>@Qnum</td>
                                             <td><i class="fa fa-circle-o fa-lg"></i></td>
@@ -165,7 +165,7 @@
                                                 <td><i class="fa fa-times-circle-o text-danger fa-lg check" style="margin-left:12px;"></i></td>
                                                 <td><i class="fa fa-circle-o fa-lg"></i></td>
                                             }
-                                            if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnTwo)
+                                            else if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnTwo)
                                             {
                                                 <td>@Qnum</td>
                                                 <td><i class="fa fa-circle-o fa-lg"></i></td>
@@ -173,7 +173,7 @@
                                                 <td><i class="fa fa-times-circle-o text-danger fa-lg check" style="margin-left:12px;"></i></td>
                                                 <td><i class="fa fa-circle-o fa-lg"></i></td>
                                             }
-                                            if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnFour)
+                                            else if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnFour)
                                             {
                                                 <td>@Qnum</td>
                                                 <td><i class="fa fa-circle-o fa-lg"></i></td>
@@ -187,7 +187,7 @@
                                     }
                                     if (question.ElementAt(i).UserAn == question.ElementAt(i).AnFour)
                                     {
-                                        if (question.ElementAt(i).UserAn == question.ElementAt(i).CorrectAn)
+                                        if (question.ElementAt(i).AnFour == question.ElementAt(i).CorrectAn)
                                         {
                                             <td>@Qnum</td>
                                             <td><i class="fa fa-circle-o fa-lg"></i></td>
@@ -206,7 +206,7 @@
                                                 <td><i class="fa fa-circle-o fa-lg"></i></td>
                                                 <td><i class="fa fa-times-circle-o text-danger fa-lg check" style="margin-left:12px;"></i></td>
                                             }
-                                            if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnTwo)
+                                            else if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnTwo)
                                             {
                                                 <td>@Qnum</td>
                                                 <td><i class="fa fa-circle-o fa-lg"></i></td>
@@ -214,7 +214,7 @@
                                                 <td><i class="fa fa-circle-o fa-lg"></i></td>
                                                 <td><i class="fa fa-times-circle-o text-danger fa-lg check" style="margin-left:12px;"></i></td>
                                             }
-                                            if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnThree)
+                                            else if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnThree)
                                             {
                                                 <td>@Qnum</td>
                                                 <td><i class="fa fa-circle-o fa-lg"></i></td>
@@ -237,7 +237,7 @@
                                             <td><i class="fa fa-question-circle-o fa-lg"></i></td>
                                             <td><i class="fa fa-question-circle-o fa-lg"></i></td>
                                         }
-                                        if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnTwo)
+                                        else if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnTwo)
                                         {
                                             <td>@Qnum</td>
                                             <td><i class="fa fa-question-circle-o fa-lg"></i></td>
@@ -245,7 +245,7 @@
                                             <td><i class="fa fa-question-circle-o fa-lg"></i></td>
                                             <td><i class="fa fa-question-circle-o fa-lg"></i></td>
                                         }
-                                        if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnThree)
+                                        else if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnThree)
                                         {
                                             <td>@Qnum</td>
                                             <td><i class="fa fa-question-circle-o fa-lg"></i></td>
@@ -253,7 +253,7 @@
                                             <td><i class="fa fa-check-circle text-success fa-lg check" style="margin-left:12px;"></i></td>
                                             <td><i class="fa fa-question-circle-o fa-lg"></i></td>
                                         }
-                                        if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnFour)
+                                        else if (question.ElementAt(i).CorrectAn == question.ElementAt(i).AnFour)
                                         {
                                             <td>@Qnum</td>
                                             <td><i class="fa fa-question-circle-o fa-lg"></i></td>

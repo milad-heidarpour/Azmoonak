@@ -8,31 +8,31 @@
 <form asp-controller="account" asp-action="login">
     <div class="container d-flex justify-content-center align-items-center min-vh-100" >
         <div class="row border rounder-5 p-3 bg-white shadow box-area">
-            <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background:#0568fd">
+            <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background:#fca402">
                 <div class="featured-image mb-3">
                     <img style="width: 250px;" src="~/Image/LoginRegister/Login.png" class="img-fluid">
                 </div>
-                <p class="text-white fs-2" style="font-weight: 600;">Login</p>
-                <small class="text-white text-wrap text-center" style="width: 17rem;">باید یه متن جدید اضافه کنم</small>
+                <p class=" fs-2" style="font-weight: 600;color:#151515;">آزمونک</p>
+                <small class=" text-wrap text-center" style="width: 17rem; color:#151515;">لطفا نام کاربری و رمز عبور خود را وارد نمایید</small>
             </div>
 
             <div class="col-md-6 right-box" >
                 <div class="row align-items-center">
                     <div class="header-text mb-4 text-center">
-                        <h2>Login Page</h2>
+                        <h2>ورود به حساب کاربری</h2>
                     </div>
                     <div class="input-group mb-3">
-                        <input asp-for="Mobile" class="form-control form-control-lg bg-light fs6" placeholder="Phone Number">
+                        <input asp-for="Mobile" class="form-control form-control-lg bg-light fs6" placeholder="شماره تلفن">
                     </div>
                     <div class="input-group mb-3">
-                        <input asp-for="Password" class="form-control form-control-lg bg-light fs6" placeholder="Your password">
+                        <input asp-for="Password" class="form-control form-control-lg bg-light fs6" placeholder="کلمه عبور">
                     </div>
 
                     <div class="inpute-group mb-3">
-                        <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Login</button>
+                        <button type="submit" class="btn btn-lg btn-primary w-100 fs-6" style="color:#151515;background-color:#fca402; border:2px solid #151515">ورود</button>
                     </div>
                     <div class="row">
-                        <small>Don't have account? <a asp-action="Register">Sign Up</a></small>
+                        <small>حساب کاربری ندارید؟ <a asp-action="Register">ثبت نام</a></small>
                     </div>
                 </div>
             </div>

@@ -55,7 +55,7 @@ public class GroupService : IGroup
 
     public async Task<List<Group>> GetGroups()
     {
-        var groups = _context.Groups.ToList();
+        var groups = _context.Groups.Where(g=>g.NotShow==false).ToList();
         return await Task.FromResult(groups);
     }
 
